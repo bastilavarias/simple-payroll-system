@@ -59,14 +59,20 @@
 const defaultActions = [
   {
     text: "Employees",
-    icon: "mdi-account-multiple",
+    icon: "mdi-account-tie",
     to: { name: "employee-table" },
   },
 
   {
     text: "Departments",
-    icon: "mdi-account-multiple",
+    icon: "mdi-dock-window",
     to: { name: "department-table" },
+  },
+
+  {
+    text: "Designations",
+    icon: "mdi-account-multiple",
+    to: { name: "designation-table" },
   },
 ];
 

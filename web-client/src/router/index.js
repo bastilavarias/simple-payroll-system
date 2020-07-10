@@ -103,6 +103,48 @@ const routes = [
           },
         ],
       },
+
+      {
+        path: "designation-management",
+        component: () => import("../pages/designation/Index.vue"),
+        children: [
+          {
+            path: "",
+            name: "designation-table",
+            component: () => import("../pages/designation/Table.vue"),
+            meta: {
+              breadcrumbs: [
+                {
+                  text: "Designation Table",
+                  icon: "mdi-table",
+                  to: { name: "designation-table" },
+                },
+              ],
+            },
+          },
+
+          {
+            path: ":operation/:designationID?",
+            name: "designation-form",
+            component: () => import("../pages/designation/Form"),
+            meta: {
+              breadcrumbs: [
+                {
+                  text: "Designation Table",
+                  icon: "mdi-table",
+                  to: { name: "designation-table" },
+                },
+
+                {
+                  text: "Designation Form",
+                  icon: "mdi-form-select",
+                  to: { name: "designation-form" },
+                },
+              ],
+            },
+          },
+        ],
+      },
     ],
   },
 ];
