@@ -94,5 +94,12 @@
         </v-col>
       </v-row>
     </v-card-text>
+    <v-card-actions>
+      <div class="flex-grow-1"></div>
+      <v-btn color="primary">
+        <span class="mr-1">Save Employee</span>
+        <v-icon>mdi-content-save</v-icon>
+      </v-btn>
+    </v-card-actions>
   </v-card>
 </template>

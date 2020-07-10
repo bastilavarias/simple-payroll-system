@@ -61,6 +61,48 @@ const routes = [
           },
         ],
       },
+
+      {
+        path: "department-management",
+        component: () => import("../pages/department/Index.vue"),
+        children: [
+          {
+            path: "",
+            name: "department-table",
+            component: () => import("../pages/department/Table.vue"),
+            meta: {
+              breadcrumbs: [
+                {
+                  text: "Department Table",
+                  icon: "mdi-table",
+                  to: { name: "department-table" },
+                },
+              ],
+            },
+          },
+
+          {
+            path: ":operation/:departmentID?",
+            name: "department-form",
+            component: () => import("../pages/department/Form"),
+            meta: {
+              breadcrumbs: [
+                {
+                  text: "Department Table",
+                  icon: "mdi-table",
+                  to: { name: "department-table" },
+                },
+
+                {
+                  text: "Department Form",
+                  icon: "mdi-form-select",
+                  to: { name: "department-form" },
+                },
+              ],
+            },
+          },
+        ],
+      },
     ],
   },
 ];
