@@ -3,7 +3,7 @@
     <v-card-text>
       <v-row dense>
         <v-col cols="12">
-          <p class="v-card__subtitle pl-0">Work Details</p>
+          <p class="v-subheader font-weight-bold pl-0">Work Details</p>
           <v-row dense>
             <v-col cols="12">
               <v-text-field
@@ -21,7 +21,7 @@
           </v-row>
         </v-col>
         <v-col cols="12">
-          <p class="v-card__subtitle pl-0">
+          <p class="v-subheader font-weight-bold pl-0">
             Government Social Welfare Services
           </p>
           <v-row dense>
@@ -46,7 +46,7 @@
           </v-row>
         </v-col>
         <v-col cols="12">
-          <p class="v-card__subtitle pl-0">Profile Information</p>
+          <p class="v-subheader font-weight-bold pl-0">Profile Information</p>
           <v-row dense>
             <v-col cols="12" md="3">
               <v-text-field label="First Name" outlined></v-text-field>

@@ -71,8 +71,14 @@ const defaultActions = [
 
   {
     text: "Designations",
-    icon: "mdi-account-multiple",
+    icon: "mdi-briefcase-account",
     to: { name: "designation-table" },
+  },
+
+  {
+    text: "Payroll",
+    icon: "mdi-database",
+    to: { name: "payroll-table" },
   },
 ];
 

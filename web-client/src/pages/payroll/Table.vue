@@ -2,8 +2,8 @@
   <v-card flat color="transparent">
     <div class="d-flex justify-space-between">
       <div class="flex-grow-1"></div>
-      <v-btn color="primary" rounded @click="openDesignationForm"
-        >Add New Department</v-btn
+      <v-btn color="primary" rounded @click="openPayrollForm"
+        >Add New Payroll</v-btn
       >
     </div>
     <v-card-text>
@@ -24,11 +24,19 @@
 <script>
 const defaultTableHeaders = [
   {
+    text: "Employee ID",
+  },
+
+  {
     text: "Name",
   },
 
   {
-    text: "Description",
+    text: "Period",
+  },
+
+  {
+    text: "Net Pay",
   },
 
   {
@@ -44,9 +52,9 @@ export default {
   },
 
   methods: {
-    openDesignationForm() {
+    openPayrollForm() {
       this.$router.push({
-        name: "designation-form",
+        name: "payroll-form",
         params: { operation: "create" },
       });
     },
