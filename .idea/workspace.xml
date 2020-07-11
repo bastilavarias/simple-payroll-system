@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2c65b972-da6b-4ca6-8d33-bd2df80b5a59" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/.browserslistrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/assets/icons8/admin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/components/custom/Breadcrumbs.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/components/custom/PasswordField.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/layouts/Admin.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/layouts/Home.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/Login.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/Report.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/department/Form.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/department/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/department/Table.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/designation/Form.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/designation/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/designation/Table.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/employee/Form.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/employee/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/employee/Table.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/payroll/Form.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/payroll/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/payroll/Table.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/user/Form.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/user/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/pages/user/Table.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/plugins/vuetify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/sass/variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/src/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-client/vue.config.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1eX1R86KXOiWplx3sYyY295dWOu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2c65b972-da6b-4ca6-8d33-bd2df80b5a59" name="Default Changelist" comment="" />
+      <created>1594453112714</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594453112714</updated>
+      <workItem from="1594453115890" duration="71000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+</project>
