@@ -2,7 +2,7 @@
   <section>
     <v-card color="transparent" flat>
       <v-card-title class="display-1 font-weight-bold"
-        >Manage Users</v-card-title
+        >Manage Accounts</v-card-title
       >
       <v-card-subtitle
         >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo,

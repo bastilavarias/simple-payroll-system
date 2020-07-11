@@ -195,40 +195,40 @@ const routes = [
       },
 
       {
-        path: "user-management",
-        component: () => import("../pages/user/Index.vue"),
+        path: "account-management",
+        component: () => import("../pages/account/Index.vue"),
         children: [
           {
             path: "",
-            name: "user-table",
-            component: () => import("../pages/user/Table.vue"),
+            name: "account-table",
+            component: () => import("../pages/account/Table.vue"),
             meta: {
               breadcrumbs: [
                 {
-                  text: "User Table",
+                  text: "Account Table",
                   icon: "mdi-table",
-                  to: { name: "user-table" },
+                  to: { name: "account-table" },
                 },
               ],
             },
           },
 
           {
-            path: ":operation/:userID?",
-            name: "user-form",
-            component: () => import("../pages/user/Form"),
+            path: ":operation/:accountID?",
+            name: "account-form",
+            component: () => import("../pages/account/Form"),
             meta: {
               breadcrumbs: [
                 {
-                  text: "User Table",
+                  text: "Account Table",
                   icon: "mdi-table",
-                  to: { name: "user-table" },
+                  to: { name: "account-table" },
                 },
 
                 {
-                  text: "User Form",
+                  text: "Account Form",
                   icon: "mdi-form-select",
-                  to: { name: "user-form" },
+                  to: { name: "account-form" },
                 },
               ],
             },

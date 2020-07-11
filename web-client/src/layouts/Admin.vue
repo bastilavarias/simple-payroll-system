@@ -88,9 +88,9 @@ const defaultActions = [
   },
 
   {
-    text: "Users",
+    text: "Accounts",
     icon: "mdi-account-multiple",
-    to: { name: "user-table" },
+    to: { name: "account-table" },
   },
 ];
 

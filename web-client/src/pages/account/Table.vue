@@ -3,7 +3,7 @@
     <div class="d-flex justify-space-between">
       <div class="flex-grow-1"></div>
       <v-btn color="primary" rounded @click="openDepartmentForm"
-        >Add New User</v-btn
+        >Add New Account</v-btn
       >
     </div>
     <v-card-text>
@@ -46,7 +46,7 @@ export default {
   methods: {
     openDepartmentForm() {
       this.$router.push({
-        name: "user-form",
+        name: "account-form",
         params: { operation: "create" },
       });
     },

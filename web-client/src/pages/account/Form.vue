@@ -16,7 +16,7 @@
     <v-card-actions>
       <div class="flex-grow-1"></div>
       <v-btn color="primary">
-        <span class="mr-1">Save User</span>
+        <span class="mr-1">Save Account</span>
         <v-icon>mdi-content-save</v-icon>
       </v-btn>
     </v-card-actions>

@@ -1,8 +1,8 @@
 import Express from "express";
-import UserRouter from "./components/user/router";
+import AccountRouter from "./components/account/router";
 
 const Api = Express();
 
-Api.use("/user", UserRouter)
+Api.use("/account", AccountRouter);
 
 export default Api;
