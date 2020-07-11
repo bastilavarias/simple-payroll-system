@@ -40,7 +40,7 @@ const defaultTableHeaders = [
   },
 
   {
-    text: "Actions",
+    text: "Date",
   },
 ];
 
