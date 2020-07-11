@@ -80,6 +80,18 @@ const defaultActions = [
     icon: "mdi-database",
     to: { name: "payroll-table" },
   },
+
+  {
+    text: "Report",
+    icon: "mdi-file-chart",
+    to: { name: "report" },
+  },
+
+  {
+    text: "Users",
+    icon: "mdi-account-multiple",
+    to: { name: "user-table" },
+  },
 ];
 
 export default {

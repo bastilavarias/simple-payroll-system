@@ -187,6 +187,54 @@ const routes = [
           },
         ],
       },
+
+      {
+        path: "report",
+        name: "report",
+        component: () => import("../pages/Report"),
+      },
+
+      {
+        path: "user-management",
+        component: () => import("../pages/user/Index.vue"),
+        children: [
+          {
+            path: "",
+            name: "user-table",
+            component: () => import("../pages/user/Table.vue"),
+            meta: {
+              breadcrumbs: [
+                {
+                  text: "User Table",
+                  icon: "mdi-table",
+                  to: { name: "user-table" },
+                },
+              ],
+            },
+          },
+
+          {
+            path: ":operation/:userID?",
+            name: "user-form",
+            component: () => import("../pages/user/Form"),
+            meta: {
+              breadcrumbs: [
+                {
+                  text: "User Table",
+                  icon: "mdi-table",
+                  to: { name: "user-table" },
+                },
+
+                {
+                  text: "User Form",
+                  icon: "mdi-form-select",
+                  to: { name: "user-form" },
+                },
+              ],
+            },
+          },
+        ],
+      },
     ],
   },
 ];
