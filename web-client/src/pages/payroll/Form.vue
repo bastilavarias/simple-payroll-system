@@ -41,8 +41,11 @@
             <v-col cols="12">
               <v-text-field label="Pag-IBIG Loans" outlined></v-text-field>
             </v-col>
-            <v-col cols="12">
+            <v-col cols="12" md="10">
               <v-text-field label="Other Loans" outlined></v-text-field>
+            </v-col>
+            <v-col cols="12" md="2">
+              <v-text-field label="No. Of Absents" outlined></v-text-field>
             </v-col>
           </v-row>
           <div class="d-flex justify-space-between align-center">
