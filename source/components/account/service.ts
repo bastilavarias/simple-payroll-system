@@ -15,7 +15,14 @@ const AccountService = {
     };
   },
 
-  fetch: () => {},
+  fetch: async () => {
+    const error = {};
+    const accounts = await AccountModel.fetch();
+    return {
+      accounts,
+      error,
+    };
+  },
 
   getInformation: () => {},
 
