@@ -7,7 +7,7 @@
       >
     </div>
     <v-card-text>
-      <v-data-table :headers="tableHeaders">
+      <v-data-table :headers="tableHeaders" :items="accounts">
         <template v-slot:top>
           <v-text-field
             label="Search here"
@@ -16,30 +16,65 @@
             append-icon="mdi-magnify"
           ></v-text-field>
         </template>
+        <template v-slot:item.name="{ item }">
+          <span class="text-capitalize">{{ item.name }}</span>
+        </template>
+        <template v-slot:item.username="{ item }">
+          <span class="text-capitalize">{{ item.username }}</span>
+        </template>
+        <template v-slot:item.actions="{ item }">
+          <v-btn icon color="secondary" @click="viewAccount(item.id)">
+            <v-icon>mdi-pencil</v-icon>
+          </v-btn>
+          <v-btn icon color="error" @click="selectAccountIDForRemoval(item.id)">
+            <v-icon>mdi-trash-can</v-icon>
+          </v-btn>
+        </template>
       </v-data-table>
     </v-card-text>
+    <custom-alert-dialog
+      :is-show.sync="isRemoveAccountAlertDialogShow"
+      :is-loading="isRemoveAccountStart"
+      :action="() => {}"
+      color="error"
+      title="Warning!"
+      message="Removing this account is irreversible. click confirm to continue."
+    ></custom-alert-dialog>
   </v-card>
 </template>
 
 <script>
+import { FETCH_ACCOUNTS } from "../../store/types/account";
+import CustomAlertDialog from "../../components/custom/AlertDialog";
+
 const defaultTableHeaders = [
   {
     text: "Name",
+    value: "name",
   },
 
   {
     text: "Username",
+    value: "username",
   },
 
   {
     text: "Actions",
+    value: "actions",
   },
 ];
 
 export default {
+  components: { CustomAlertDialog },
   data() {
     return {
       tableHeaders: defaultTableHeaders,
+      isFetchAccountsStart: false,
+      accounts: [],
+      keyword: "",
+      isRemoveAccountStart: false,
+      isRemoveAccountAlertDialogShow: false,
+      selectedAccountIDForRemoval: null,
     };
   },
 
@@ -50,6 +85,29 @@ export default {
         params: { operation: "create" },
       });
     },
+
+    async fetchAccounts() {
+      this.isFetchAccountsStart = true;
+      const { accounts } = await this.$store.dispatch(FETCH_ACCOUNTS);
+      this.accounts = accounts;
+      this.isFetchAccountsStart = false;
+    },
+
+    viewAccount(accountID) {
+      this.$router.push({
+        name: "account-form",
+        params: { operation: "view", accountID },
+      });
+    },
+
+    selectAccountIDForRemoval(accountID) {
+      this.isRemoveAccountAlertDialogShow = true;
+      this.selectedAccountIDForRemoval = accountID;
+    },
+  },
+
+  async created() {
+    await this.fetchAccounts();
   },
 };
 </script>
