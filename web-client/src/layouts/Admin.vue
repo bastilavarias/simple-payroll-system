@@ -50,12 +50,14 @@
     <v-main>
       <v-container>
         <router-view></router-view>
+        <custom-global-notification-snackbar></custom-global-notification-snackbar>
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
+import CustomGlobalNotificationSnackbar from "../components/custom/GlobalNotificationSnackbar";
 const defaultActions = [
   {
     text: "Employees",
@@ -95,6 +97,7 @@ const defaultActions = [
 ];
 
 export default {
+  components: { CustomGlobalNotificationSnackbar },
   data() {
     return {
       actions: defaultActions,
