@@ -65,6 +65,21 @@ const AccountController = {
       response.status(400).json(error);
     }
   },
+
+  remove: async (request: Request, response: Response) => {
+    try {
+      const accountID = request.params.accountID
+        ? parseInt(request.params.accountID)
+        : 0;
+      const result = await AccountService.remove(accountID);
+      if (Object.keys(result.error).length > 0) throw result.error;
+      delete result.error;
+      response.status(200).json(result);
+    } catch (error) {
+      console.log(error);
+      response.status(400).json(error);
+    }
+  },
 };
 
 export default AccountController;

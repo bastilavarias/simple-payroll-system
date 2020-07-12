@@ -53,7 +53,15 @@ const AccountService = {
     };
   },
 
-  delete: () => {},
+  remove: async (accountID: number) => {
+    const error = {};
+    let message = "Account was successfully removed.";
+    await AccountModel.remove(accountID);
+    return {
+      error,
+      message,
+    };
+  },
 };
 
 export default AccountService;
