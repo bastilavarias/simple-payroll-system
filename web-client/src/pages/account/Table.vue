@@ -11,6 +11,7 @@
         :headers="tableHeaders"
         :items="accounts"
         :loading="isFetchAccountsStart"
+        :search="keyword"
       >
         <template v-slot:top>
           <v-text-field
@@ -18,6 +19,7 @@
             single-line
             outlined
             append-icon="mdi-magnify"
+            v-model="keyword"
           ></v-text-field>
         </template>
         <template v-slot:item.name="{ item }">
