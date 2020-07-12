@@ -35,7 +35,7 @@
     <custom-alert-dialog
       :is-show.sync="isRemoveAccountAlertDialogShow"
       :is-loading="isRemoveAccountStart"
-      :action="() => {}"
+      :action="removeAccount"
       color="error"
       title="Warning!"
       message="Removing this account is irreversible. click confirm to continue."
@@ -44,8 +44,9 @@
 </template>
 
 <script>
-import { FETCH_ACCOUNTS } from "../../store/types/account";
+import { FETCH_ACCOUNTS, REMOVE_ACCOUNT } from "../../store/types/account";
 import CustomAlertDialog from "../../components/custom/AlertDialog";
+import { SHOW_GLOBAL_NOTIFICATION } from "../../store/types/global";
 
 const defaultTableHeaders = [
   {
@@ -103,6 +104,20 @@ export default {
     selectAccountIDForRemoval(accountID) {
       this.isRemoveAccountAlertDialogShow = true;
       this.selectedAccountIDForRemoval = accountID;
+    },
+
+    async removeAccount() {
+      this.isRemoveAccountStart = true;
+      const removeAccountMessage = await this.$store.dispatch(
+        REMOVE_ACCOUNT,
+        this.selectedAccountIDForRemoval
+      );
+      if (removeAccountMessage) {
+        this.isRemoveAccountAlertDialogShow = false;
+        this.$store.commit(SHOW_GLOBAL_NOTIFICATION, removeAccountMessage);
+        await this.fetchAccounts();
+      }
+      this.isRemoveAccountStart = false;
     },
   },
 
