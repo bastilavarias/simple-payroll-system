@@ -1,10 +1,10 @@
 import Database from "../../database";
-import { AccountForm } from "./type";
+import { AccountForm, AccountInformation } from "./type";
 
 const AccountModel = {
-  save: async (userForm: AccountForm, hashedPassword: string) => {
+  save: async (accountForm: AccountForm, hashedPassword: string) => {
     const query = `insert into account (name, username, password) values ($1, $2, $3);`;
-    const { name, username } = userForm;
+    const { name, username } = accountForm;
     const parameters = [name, username, hashedPassword];
     await Database.execute(query, parameters);
   },
@@ -15,9 +15,23 @@ const AccountModel = {
     return rows.length > 0 ? rows : [];
   },
 
-  getInformation: () => {},
+  getInformation: async (accountID: number): Promise<AccountInformation> => {
+    const query = `select a.id, a.name, a.username from account a where a.is_deleted = false and a.id = $1;`;
+    const parameters = [accountID];
+    const { rows } = await Database.execute(query, parameters);
+    return rows.length > 0 ? rows[0] : {};
+  },
 
-  update: () => {},
+  update: async (
+    accountID: number,
+    accountForm: AccountForm,
+    hashedPassword: string
+  ) => {
+    const query = `update account set name = $1, username = $2, password = $3 where id = $4;`;
+    const { name, username } = accountForm;
+    const parameters = [name, username, hashedPassword, accountID];
+    await Database.execute(query, parameters);
+  },
 
   delete: () => {},
 };

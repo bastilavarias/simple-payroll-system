@@ -3,11 +3,13 @@ import UtilityService from "../utility/service";
 import AccountModel from "./model";
 
 const AccountService = {
-  save: async (userForm: AccountForm) => {
+  save: async (accountForm: AccountForm) => {
     let message = "";
     const error = {};
-    const hashedPassword = await UtilityService.hashPassword(userForm.password);
-    await AccountModel.save(userForm, hashedPassword);
+    const hashedPassword = await UtilityService.hashPassword(
+      accountForm.password
+    );
+    await AccountModel.save(accountForm, hashedPassword);
     message = "Account was successfully saved.";
     return {
       error,
@@ -24,9 +26,32 @@ const AccountService = {
     };
   },
 
-  getInformation: () => {},
+  getInformation: async (accountID: number) => {
+    const error = {};
+    const gotAccountInformation = await AccountModel.getInformation(accountID);
+    return {
+      information: gotAccountInformation,
+      error,
+    };
+  },
 
-  update: () => {},
+  update: async (accountID: number, accountForm: AccountForm) => {
+    const error = {};
+    let message = "";
+    const gotAccountInformation = await AccountModel.getInformation(accountID);
+    let newHashedPassword = gotAccountInformation.hashedPassword;
+    if (accountForm.password) {
+      newHashedPassword = await UtilityService.hashPassword(
+        accountForm.password
+      );
+    }
+    await AccountModel.update(accountID, accountForm, newHashedPassword);
+    message = "Account was successfully updated.";
+    return {
+      error,
+      message,
+    };
+  },
 
   delete: () => {},
 };
