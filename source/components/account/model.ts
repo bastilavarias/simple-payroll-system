@@ -10,13 +10,13 @@ const AccountModel = {
   },
 
   fetch: async () => {
-    const query = `select a.id, a.name, a.username from account a where a.is_deleted = false;`;
+    const query = `select a.id, a.name, a.username from account a where a.is_deleted = false order by id asc;`;
     const { rows } = await Database.execute(query);
     return rows.length > 0 ? rows : [];
   },
 
   getInformation: async (accountID: number): Promise<AccountInformation> => {
-    const query = `select a.id, a.name, a.username from account a where a.is_deleted = false and a.id = $1;`;
+    const query = `select a.id, a.name, a.username, a.password "hashedPassword" from account a where a.is_deleted = false and a.id = $1;`;
     const parameters = [accountID];
     const { rows } = await Database.execute(query, parameters);
     return rows.length > 0 ? rows[0] : {};

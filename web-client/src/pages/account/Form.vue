@@ -16,11 +16,18 @@
             outlined
           ></v-text-field>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="12" v-if="!isViewMode">
           <custom-password-field
             :password.sync="form.password"
             outlined
             label="Password"
+          ></custom-password-field
+        ></v-col>
+        <v-col cols="12" v-if="isViewMode">
+          <custom-password-field
+            :password.sync="form.newPassword"
+            outlined
+            label="New Password"
           ></custom-password-field>
         </v-col>
       </v-row>
@@ -29,12 +36,23 @@
       <div class="flex-grow-1"></div>
       <v-btn
         color="primary"
-        :disabled="!isFormValid"
+        :disabled="!isSaveAccountFormValid"
         :loading="isSaveAccountStart"
         @click="saveAccount"
+        v-if="!isViewMode"
       >
         <span class="mr-1">Save Account</span>
         <v-icon>mdi-content-save</v-icon>
+      </v-btn>
+      <v-btn
+        color="secondary"
+        :disabled="!isUpdateAccountFormValid"
+        :loading="isUpdateAccountStart"
+        @click="updateAccount"
+        v-if="isViewMode"
+      >
+        <span class="mr-1">Update Account</span>
+        <v-icon>mdi-pencil</v-icon>
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -44,6 +62,7 @@
 import {
   GET_ACCOUNT_INFORMATION,
   SAVE_ACCOUNT,
+  UPDATE_ACCOUNT,
 } from "../../store/types/account";
 import { SHOW_GLOBAL_NOTIFICATION } from "../../store/types/global";
 import CustomPasswordField from "../../components/custom/PasswordField";
@@ -52,6 +71,7 @@ const defaultForm = {
   name: "",
   username: "",
   password: "",
+  newPassword: "",
 };
 
 export default {
@@ -61,13 +81,19 @@ export default {
       form: Object.assign({}, defaultForm),
       defaultForm,
       isSaveAccountStart: false,
+      isUpdateAccountStart: false,
     };
   },
 
   computed: {
-    isFormValid() {
+    isSaveAccountFormValid() {
       const { name, username, password } = this.form;
       return name && username && password;
+    },
+
+    isUpdateAccountFormValid() {
+      const { name, username } = this.form;
+      return name && username;
     },
 
     operation() {
@@ -114,6 +140,25 @@ export default {
       );
       this.form.name = name;
       this.form.username = username;
+    },
+
+    async updateAccount() {
+      this.isUpdateAccountStart = true;
+      const payload = {
+        accountID: this.accountID ? this.accountID : 0,
+        name: this.form.name ? this.form.name : "",
+        username: this.form.username ? this.form.username : "",
+        password: this.form.newPassword ? this.form.newPassword : "",
+      };
+      const updateAccountMessage = await this.$store.dispatch(
+        UPDATE_ACCOUNT,
+        payload
+      );
+      if (updateAccountMessage) {
+        this.$store.commit(SHOW_GLOBAL_NOTIFICATION, updateAccountMessage);
+        await this.$router.push({ name: "account-table" });
+      }
+      this.isUpdateAccountStart = false;
     },
   },
 

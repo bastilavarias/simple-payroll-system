@@ -44,12 +44,12 @@ const AccountStoreModule = {
       { accountID, name, username, password }
     ) => {
       try {
-        const accountFormData = new FormData();
-        accountFormData.append("accountID", accountID);
-        accountFormData.append("name", name);
-        accountFormData.append("username", username);
-        accountFormData.append("password", password);
-        const result = await AccountHTTP.update(accountFormData);
+        const result = await AccountHTTP.update({
+          accountID,
+          name,
+          username,
+          password,
+        });
         const { message } = result.data;
         return message;
       } catch (error) {

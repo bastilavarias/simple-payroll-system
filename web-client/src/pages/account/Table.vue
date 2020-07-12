@@ -7,7 +7,11 @@
       >
     </div>
     <v-card-text>
-      <v-data-table :headers="tableHeaders" :items="accounts">
+      <v-data-table
+        :headers="tableHeaders"
+        :items="accounts"
+        :loading="isFetchAccountsStart"
+      >
         <template v-slot:top>
           <v-text-field
             label="Search here"

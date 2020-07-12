@@ -29,6 +29,7 @@ const AccountService = {
   getInformation: async (accountID: number) => {
     const error = {};
     const gotAccountInformation = await AccountModel.getInformation(accountID);
+    delete gotAccountInformation.hashedPassword;
     return {
       information: gotAccountInformation,
       error,
