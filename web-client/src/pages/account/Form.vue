@@ -41,7 +41,10 @@
 </template>
 
 <script>
-import { SAVE_ACCOUNT } from "../../store/types/account";
+import {
+  GET_ACCOUNT_INFORMATION,
+  SAVE_ACCOUNT,
+} from "../../store/types/account";
 import { SHOW_GLOBAL_NOTIFICATION } from "../../store/types/global";
 import CustomPasswordField from "../../components/custom/PasswordField";
 
@@ -65,6 +68,19 @@ export default {
     isFormValid() {
       const { name, username, password } = this.form;
       return name && username && password;
+    },
+
+    operation() {
+      return this.$route.params.operation;
+    },
+
+    accountID() {
+      const id = this.$route.params.accountID;
+      return id ? id : 0;
+    },
+
+    isViewMode() {
+      return this.operation === "view";
     },
   },
 
@@ -90,6 +106,21 @@ export default {
     clearForm() {
       this.form = Object.assign({}, this.defaultForm);
     },
+
+    async getAccountInformation() {
+      const { name, username } = await this.$store.dispatch(
+        GET_ACCOUNT_INFORMATION,
+        this.accountID
+      );
+      this.form.name = name;
+      this.form.username = username;
+    },
+  },
+
+  async created() {
+    if (this.isViewMode) {
+      await this.getAccountInformation();
+    }
   },
 };
 </script>
