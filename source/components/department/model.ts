@@ -27,7 +27,7 @@ const DepartmentModel = {
   update: async (departmentID: number, departmentForm: DepartmentForm) => {
     const query = `update department set name = $1, description = $2 where id = $3;`;
     const { name, description } = departmentForm;
-    const parameters = [name, description];
+    const parameters = [name, description, departmentID];
     await Database.execute(query, parameters);
   },
 
