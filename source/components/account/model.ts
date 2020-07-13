@@ -34,7 +34,7 @@ const AccountModel = {
   },
 
   remove: async (accountID: number) => {
-    const query = `update account set is_deleted = true where id = $1;`;
+    const query = `update account set is_deleted = true, deleted_at = now() where id = $1;`;
     const parameters = [accountID];
     await Database.execute(query, parameters);
   },

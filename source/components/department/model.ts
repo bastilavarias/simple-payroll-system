@@ -32,7 +32,7 @@ const DepartmentModel = {
   },
 
   remove: async (departmentID: number) => {
-    const query = `update department set is_deleted = true where id = $1;`;
+    const query = `update department set is_deleted = true, deleted_at = now() where id = $1;`;
     const parameters = [departmentID];
     await Database.execute(query, parameters);
   },
