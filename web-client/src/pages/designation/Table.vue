@@ -3,7 +3,7 @@
     <div class="d-flex justify-space-between">
       <div class="flex-grow-1"></div>
       <v-btn color="primary" rounded @click="openDesignationForm"
-        >Add New Department</v-btn
+        >Add New Designation</v-btn
       >
     </div>
     <v-card-text>
@@ -29,6 +29,10 @@ const defaultTableHeaders = [
 
   {
     text: "Description",
+  },
+
+  {
+    text: "Daily Salary",
   },
 
   {
