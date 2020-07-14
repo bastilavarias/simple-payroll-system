@@ -52,6 +52,15 @@ const EmployeeService = {
     };
   },
 
+  getInformation: async (employeeID: number) => {
+    const error = {};
+    const information = await EmployeeModel.getInformation(employeeID);
+    return {
+      error,
+      information,
+    };
+  },
+
   formatCustomID: (tableRowsCount: number): string => {
     let lastPart = "";
     if (tableRowsCount >= 0 && tableRowsCount <= 9)

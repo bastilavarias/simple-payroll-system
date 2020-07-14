@@ -148,6 +148,56 @@ const EmployeeModel = {
     const { rows } = await Database.execute(query);
     return rows.length > 0 ? rows[0].json_agg : [];
   },
+
+  getInformation: async (employeeID: number): Promise<EmployeeInformation> => {
+    const query = `select row_to_json(employee)
+                       from (
+                                select e.id,
+                                       e.custom_id                                       "customID",
+                                       (select row_to_json(department)
+                                        from (select id, name, description
+                                              from department
+                                              where id = e.department_id) department)    department,
+                                       (select row_to_json(designation)
+                                        from (select id, name, description, daily_salary "dailySalary"
+                                              from designation
+                                              where id = e.designation_id) designation)  designation,
+                                       (select row_to_json(profile)
+                                        from (select id,
+                                                     first_name     "firstName",
+                                                     middle_name    "middleName",
+                                                     last_name      "lastName",
+                                                     extension_name "extensionName",
+                                                     birth_date     "birthDate",
+                                                     birth_place    "birthPlace",
+                                                     sex,
+                                                     citizenship,
+                                                     civil_status   "civilStatus",
+                                                     address,
+                                                     contact_number "contactNumber",
+                                                     height,
+                                                     weight,
+                                                     blood_type     "bloodType"
+                                              from employee_profile
+                                              where id = e.employee_profile_id) profile) profile,
+                                       (select row_to_json(benefit)
+                                        from (select id,
+                                                    gsis_number "gsisNumber",
+                                                     pag_ibig_id_number "pagIbigIDNumber",
+                                                     philhealth_number "philhealthNumber",
+                                                     sss_number "sssNumber",
+                                                     tin_number "tinNumber",
+                                                     agency_employee_number "agencyEmployeeNumber"
+                                              from employee_benefit
+                                              where id = e.employee_benefit_id) benefit) benefit
+                                from employee e
+                                where e.is_deleted = false and e.id = $1
+                                order by e.id asc
+                            ) employee;`;
+    const parameters = [employeeID];
+    const { rows } = await Database.execute(query, parameters);
+    return rows.length > 0 ? rows[0].row_to_json : {};
+  },
 };
 
 export default EmployeeModel;
