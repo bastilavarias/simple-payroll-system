@@ -21,31 +21,6 @@
           </v-row>
         </v-col>
         <v-col cols="12">
-          <p class="v-subheader font-weight-bold pl-0">
-            Government Social Welfare Services
-          </p>
-          <v-row dense>
-            <v-col cols="12" md="6">
-              <v-text-field label="GSIS ID No." outlined></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-text-field label="PAG-IBIG ID No." outlined></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-text-field label="PHILHEALTH No." outlined></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-text-field label="SSS No." outlined></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-text-field label="TIN No." outlined></v-text-field>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-text-field label="Agency Employee No." outlined></v-text-field>
-            </v-col>
-          </v-row>
-        </v-col>
-        <v-col cols="12">
           <p class="v-subheader font-weight-bold pl-0">Profile Information</p>
           <v-row dense>
             <v-col cols="12" md="3">
@@ -89,6 +64,31 @@
             </v-col>
             <v-col cols="12" md="2">
               <v-select label="Blood Type" outlined></v-select>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-col cols="12">
+          <p class="v-subheader font-weight-bold pl-0">
+            Benefits
+          </p>
+          <v-row dense>
+            <v-col cols="12" md="6">
+              <v-text-field label="GSIS ID No." outlined></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field label="PAG-IBIG ID No." outlined></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field label="PHILHEALTH No." outlined></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field label="SSS No." outlined></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field label="TIN No." outlined></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field label="Agency Employee No." outlined></v-text-field>
             </v-col>
           </v-row>
         </v-col>

@@ -1,4 +1,4 @@
-const query = `create table if not exists designation (
+const query = `create table if not exists designation ( 
     id serial primary key not null,
     name varchar(250) not null,
     description text not null,
