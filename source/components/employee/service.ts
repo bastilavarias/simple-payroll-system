@@ -21,10 +21,13 @@ const EmployeeService = {
   },
 
   save: async (employeeForm: EmployeeForm) => {
-    // const { customID } = await EmployeeService.generateCustomID();
     const savedEmployeeProfileID = await EmployeeModel.saveProfile(
       employeeForm.profile
     );
+    const savedEmployeeBenefitID = await EmployeeModel.saveBenefit(
+      employeeForm.benefit
+    );
+    const { customID } = await EmployeeService.generateCustomID();
   },
 
   formatCustomID: (tableRowsCount: number): string => {
