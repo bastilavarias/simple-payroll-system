@@ -30,8 +30,11 @@
             formatFullName(item.profile)
           }}</span>
         </template>
-        <template v-slot:item.username="{ item }">
-          <span class="text-capitalize">{{ item.username }}</span>
+        <template v-slot:item.department="{ item }">
+          <span class="text-capitalize">{{ item.department.name }}</span>
+        </template>
+        <template v-slot:item.designation="{ item }">
+          <span class="text-capitalize">{{ item.designation.name }}</span>
         </template>
         <template v-slot:item.actions="{ item }">
           <v-btn icon color="secondary" @click="viewEmployee(item.id)">
