@@ -326,7 +326,6 @@ export default {
       const { departmentID, designationID, profile, benefit } = this.form;
       const {
         firstName,
-        middleName,
         lastName,
         birthDate,
         birthPlace,
@@ -339,7 +338,6 @@ export default {
         departmentID &&
         designationID &&
         firstName &&
-        middleName &&
         lastName &&
         birthDate &&
         birthPlace &&
