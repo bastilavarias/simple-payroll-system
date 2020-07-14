@@ -146,7 +146,8 @@ const EmployeeModel = {
                                 order by e.id asc
                             ) employees;`;
     const { rows } = await Database.execute(query);
-    return rows.length > 0 ? rows[0].json_agg : [];
+    console.log(rows);
+    return rows[0].json_agg ? rows[0].json_agg : [];
   },
 
   getInformation: async (employeeID: number): Promise<EmployeeInformation> => {
@@ -292,6 +293,12 @@ const EmployeeModel = {
     const query = `update employee set department_id = $1, designation_id = $2 where id = $3;`;
     const { departmentID, designationID } = employeeForm;
     const parameters = [departmentID, designationID, employeeID];
+    await Database.execute(query, parameters);
+  },
+
+  remove: async (employeeID: number) => {
+    const query = `update employee set is_deleted = true, deleted_at = now() where id = $1;`;
+    const parameters = [employeeID];
     await Database.execute(query, parameters);
   },
 };

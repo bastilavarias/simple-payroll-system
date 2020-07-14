@@ -79,6 +79,17 @@ const EmployeeService = {
     };
   },
 
+  remove: async (employeeID: number) => {
+    const error = {};
+    let message = "";
+    await EmployeeModel.remove(employeeID);
+    message = "Employee was successfully removed.";
+    return {
+      error,
+      message,
+    };
+  },
+
   formatCustomID: (tableRowsCount: number): string => {
     let lastPart = "";
     if (tableRowsCount >= 0 && tableRowsCount <= 9)

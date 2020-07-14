@@ -218,6 +218,21 @@ const EmployeeController = {
       response.status(400).json(error);
     }
   },
+
+  remove: async (request: Request, response: Response) => {
+    try {
+      const employeeID = request.params.employeeID
+        ? parseInt(request.params.employeeID)
+        : 0;
+      const result = await EmployeeService.remove(employeeID);
+      if (Object.keys(result.error).length > 0) throw result.error;
+      delete result.error;
+      response.status(200).json(result);
+    } catch (error) {
+      console.log(error);
+      response.status(400).json(error);
+    }
+  },
 };
 
 export default EmployeeController;
