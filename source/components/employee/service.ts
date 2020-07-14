@@ -1,4 +1,6 @@
 import HelperModel from "../helper/model";
+import { EmployeeForm } from "./type";
+import EmployeeModel from "./model";
 
 const EmployeeService = {
   generateCustomID: async () => {
@@ -16,6 +18,13 @@ const EmployeeService = {
       customID: generatedCustomID,
       error,
     };
+  },
+
+  save: async (employeeForm: EmployeeForm) => {
+    // const { customID } = await EmployeeService.generateCustomID();
+    const savedEmployeeProfileID = await EmployeeModel.saveProfile(
+      employeeForm.profile
+    );
   },
 
   formatCustomID: (tableRowsCount: number): string => {
