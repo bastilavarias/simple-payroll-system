@@ -133,11 +133,11 @@ const EmployeeModel = {
                                               where id = e.employee_profile_id) profile) profile,
                                        (select row_to_json(benefit)
                                         from (select id,
-                                                    gsis_number "gsisNumber",
-                                                     pag_ibig_id_number "pagIbigIDNumber",
-                                                     philhealth_number "philhealthNumber",
-                                                     sss_number "sssNumber",
-                                                     tin_number "tinNumber",
+                                                     gsis_number            "gsisNumber",
+                                                     pag_ibig_id_number     "pagIbigIDNumber",
+                                                     philhealth_number      "philhealthNumber",
+                                                     sss_number             "sssNumber",
+                                                     tin_number             "tinNumber",
                                                      agency_employee_number "agencyEmployeeNumber"
                                               from employee_benefit
                                               where id = e.employee_benefit_id) benefit) benefit
@@ -182,21 +182,117 @@ const EmployeeModel = {
                                               where id = e.employee_profile_id) profile) profile,
                                        (select row_to_json(benefit)
                                         from (select id,
-                                                    gsis_number "gsisNumber",
-                                                     pag_ibig_id_number "pagIbigIDNumber",
-                                                     philhealth_number "philhealthNumber",
-                                                     sss_number "sssNumber",
-                                                     tin_number "tinNumber",
+                                                     gsis_number            "gsisNumber",
+                                                     pag_ibig_id_number     "pagIbigIDNumber",
+                                                     philhealth_number      "philhealthNumber",
+                                                     sss_number             "sssNumber",
+                                                     tin_number             "tinNumber",
                                                      agency_employee_number "agencyEmployeeNumber"
                                               from employee_benefit
                                               where id = e.employee_benefit_id) benefit) benefit
                                 from employee e
-                                where e.is_deleted = false and e.id = $1
+                                where e.is_deleted = false
+                                  and e.id = $1
                                 order by e.id asc
                             ) employee;`;
     const parameters = [employeeID];
     const { rows } = await Database.execute(query, parameters);
     return rows.length > 0 ? rows[0].row_to_json : {};
+  },
+
+  updateProfile: async (
+    employeeProfileID: number,
+    employeeProfileForm: EmployeeProfileForm
+  ) => {
+    const query = `update employee_profile
+                       set first_name     = $1,
+                           middle_name    = $2,
+                           last_name      = $3,
+                           extension_name = $4,
+                           birth_date     = $5,
+                           birth_place    = $6,
+                           sex            = $7,
+                           citizenship    = $8,
+                           civil_status   = $9,
+                           address        = $10,
+                           contact_number = $11,
+                           height         = $12,
+                           weight         = $13,
+                           blood_type     = $14
+                       where id = $15;`;
+    const {
+      firstName,
+      middleName,
+      lastName,
+      extensionName,
+      birthDate,
+      birthPlace,
+      sex,
+      citizenship,
+      civilStatus,
+      address,
+      contactNumber,
+      height,
+      weight,
+      bloodType,
+    } = employeeProfileForm;
+    const parameters = [
+      firstName,
+      middleName,
+      lastName,
+      extensionName,
+      birthDate,
+      birthPlace,
+      sex,
+      citizenship,
+      civilStatus,
+      address,
+      contactNumber,
+      height,
+      weight,
+      bloodType,
+      employeeProfileID,
+    ];
+    await Database.execute(query, parameters);
+  },
+
+  updateBenefit: async (
+    employeeBenefitID: number,
+    employeeBenefitForm: EmployeeBenefitForm
+  ) => {
+    const query = `update employee_benefit
+                       set gsis_number            = $1,
+                           pag_ibig_id_number     = $2,
+                           philhealth_number      = $3,
+                           sss_number             = $4,
+                           tin_number             = $5,
+                           agency_employee_number = $6
+                       where id = $7;`;
+    const {
+      gsisNumber,
+      pagIbigIDNumber,
+      philhealthNumber,
+      sssNumber,
+      tinNumber,
+      agencyEmployeeNumber,
+    } = employeeBenefitForm;
+    const parameters = [
+      gsisNumber,
+      pagIbigIDNumber,
+      philhealthNumber,
+      sssNumber,
+      tinNumber,
+      agencyEmployeeNumber,
+      employeeBenefitID,
+    ];
+    await Database.execute(query, parameters);
+  },
+
+  update: async (employeeID: number, employeeForm: EmployeeForm) => {
+    const query = `update employee set department_id = $1, designation_id = $2 where id = $3;`;
+    const { departmentID, designationID } = employeeForm;
+    const parameters = [departmentID, designationID, employeeID];
+    await Database.execute(query, parameters);
   },
 };
 

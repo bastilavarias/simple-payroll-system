@@ -61,6 +61,24 @@ const EmployeeService = {
     };
   },
 
+  update: async (
+    employeeID: number,
+    employeeProfileID: number,
+    employeeBenefitID: number,
+    employeeForm: EmployeeForm
+  ) => {
+    let message = "";
+    const error = {};
+    await EmployeeModel.updateProfile(employeeProfileID, employeeForm.profile);
+    await EmployeeModel.updateBenefit(employeeBenefitID, employeeForm.benefit);
+    await EmployeeModel.update(employeeID, employeeForm);
+    message = "Employee was successfully updated.";
+    return {
+      message,
+      error,
+    };
+  },
+
   formatCustomID: (tableRowsCount: number): string => {
     let lastPart = "";
     if (tableRowsCount >= 0 && tableRowsCount <= 9)

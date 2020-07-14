@@ -5,10 +5,7 @@ const query = `create table if not exists employee_benefit (
     philhealth_number text,
     sss_number text,
     tin_number text,
-    agency_employee_number text,
-    created_at         timestamp default now(),
-    is_deleted         boolean   default false,
-    deleted_at         timestamp
-    );`;
+    agency_employee_number text
+);`;
 
 export default query;

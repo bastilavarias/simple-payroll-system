@@ -13,10 +13,7 @@ const query = `create table if not exists employee_profile (
     contact_number text,
     height varchar(15),
     weight varchar(15),
-    blood_type varchar(5),
-    created_at         timestamp default now(),
-    is_deleted         boolean   default false,
-    deleted_at         timestamp
-    );`;
+    blood_type varchar(5)
+);`;
 
 export default query;
