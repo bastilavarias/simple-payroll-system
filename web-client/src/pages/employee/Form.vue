@@ -73,19 +73,51 @@
               <v-text-field label="Extension" outlined></v-text-field>
             </v-col>
             <v-col cols="12" md="5">
-              <v-select label="Birth Date" outlined></v-select>
+              <custom-date-input
+                outlined
+                :date.sync="form.profile.birthDate"
+                label="Birth Date"
+              ></custom-date-input>
             </v-col>
             <v-col cols="12" md="5">
-              <v-select label="Place Of Birth" outlined></v-select>
+              <v-autocomplete
+                label="Place Of Birth"
+                outlined
+                :items="cities"
+                item-value="name"
+                item-text="name"
+              >
+                <template v-slot:selection="{ item }"
+                  ><span class="text-capitalize">{{
+                    item.name
+                  }}</span></template
+                ></v-autocomplete
+              >
             </v-col>
             <v-col cols="12" md="2">
-              <v-select label="Sex" outlined></v-select>
+              <v-select label="Sex" outlined :items="sexes"></v-select>
             </v-col>
             <v-col cols="12">
-              <v-select label="Citizenship" outlined></v-select>
+              <v-autocomplete
+                label="Citizenship"
+                outlined
+                :items="nationalities"
+                item-value="label"
+                item-text="label"
+              >
+                <template v-slot:selection="{ item }"
+                  ><span class="text-capitalize">{{
+                    item.label
+                  }}</span></template
+                >
+              </v-autocomplete>
             </v-col>
             <v-col cols="12">
-              <v-select label="Civil Status" outlined></v-select>
+              <v-select
+                label="Civil Status"
+                outlined
+                :items="civilStatuses"
+              ></v-select>
             </v-col>
             <v-col cols="12" md="8">
               <v-text-field label="Address" outlined></v-text-field>
@@ -94,13 +126,17 @@
               <v-text-field label="Contact No." outlined></v-text-field>
             </v-col>
             <v-col cols="12" md="5">
-              <v-text-field label="Height (m)" outlined></v-text-field>
+              <v-text-field label="Height (meters)" outlined></v-text-field>
             </v-col>
             <v-col cols="12" md="5">
-              <v-text-field label="Weight (kg)" outlined></v-text-field>
+              <v-text-field label="Weight (kilograms)" outlined></v-text-field>
             </v-col>
             <v-col cols="12" md="2">
-              <v-select label="Blood Type" outlined></v-select>
+              <v-select
+                label="Blood Type"
+                outlined
+                :items="bloodTypes"
+              ></v-select>
             </v-col>
           </v-row>
         </v-col>
@@ -145,6 +181,9 @@
 import { FETCH_DEPARTMENTS } from "../../store/types/department";
 import { FETCH_DESIGNATIONS } from "../../store/types/designation";
 import { GENERATE_EMPLOYEE_CUSTOM_ID } from "../../store/types/employee";
+import CustomDateInput from "../../components/custom/DatePickerInput";
+import cities from "../../assets/data/cities.json";
+import nationalities from "../../assets/data/nationalities.json";
 
 const defaultForm = {
   departmentID: null,
@@ -176,6 +215,7 @@ const defaultForm = {
 };
 
 export default {
+  components: { CustomDateInput },
   data() {
     return {
       form: Object.assign({}, defaultForm),
@@ -185,6 +225,11 @@ export default {
       isGenerateEmployeeCustomIDStart: false,
       isFetchDepartmentsStart: false,
       isFetchDesignationsStart: false,
+      cities: cities,
+      sexes: ["Male", "Female"],
+      nationalities: nationalities,
+      civilStatuses: ["Single", "Maried", "Divorced", "Separated", "Widowed"],
+      bloodTypes: ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"],
     };
   },
 
