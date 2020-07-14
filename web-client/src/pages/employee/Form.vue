@@ -9,14 +9,49 @@
               <v-text-field
                 label="Employee ID"
                 append-icon="mdi-refresh"
+                @click:append="generateEmployeeCustomID"
                 outlined
+                :loading="isGenerateEmployeeCustomIDStart"
+                :value="customID"
+                readonly
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="8">
-              <v-autocomplete label="Department" outlined></v-autocomplete>
+              <v-autocomplete
+                label="Department"
+                outlined
+                :items="departments"
+                item-value="id"
+                v-model="form.departmentID"
+              >
+                <template v-slot:item="{ item }"
+                  ><span class="text-capitalize">{{
+                    item.name
+                  }}</span></template
+                >
+                <template v-slot:selection="{ item }">
+                  <span class="text-capitalize">{{ item.name }}</span>
+                </template>
+              </v-autocomplete>
             </v-col>
             <v-col cols="12" md="4">
-              <v-autocomplete label="Designation" outlined></v-autocomplete>
+              <v-autocomplete
+                label="Designation"
+                outlined
+                :items="designations"
+                item-value="id"
+                item-text="name"
+                v-model="form.designationID"
+              >
+                <template v-slot:item="{ item }"
+                  ><span class="text-capitalize">{{
+                    item.name
+                  }}</span></template
+                >
+                <template v-slot:selection="{ item }">
+                  <span class="text-capitalize">{{ item.name }}</span>
+                </template>
+              </v-autocomplete>
             </v-col>
           </v-row>
         </v-col>
@@ -103,3 +138,77 @@
     </v-card-actions>
   </v-card>
 </template>
+
+<script>
+import { FETCH_DEPARTMENTS } from "../../store/types/department";
+import { FETCH_DESIGNATIONS } from "../../store/types/designation";
+import { GENERATE_EMPLOYEE_CUSTOM_ID } from "../../store/types/employee";
+
+const defaultForm = {
+  departmentID: null,
+  designationID: null,
+  profile: {
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    extensionName: "",
+    birthDate: null,
+    birthPlace: "",
+    sex: "",
+    citizenship: "",
+    civilStatus: "",
+    address: "",
+    contactNumber: "",
+    height: "",
+    weight: "",
+    bloodType: "",
+  },
+  benefit: {
+    gsisNumber: "",
+    pagIbigIDNumber: "",
+    philhealthNumber: "",
+    sssNumber: "",
+    tinNumber: "",
+    agencyEmployeeNumber: "",
+  },
+};
+
+export default {
+  data() {
+    return {
+      form: Object.assign({}, defaultForm),
+      customID: "",
+      departments: [],
+      designations: [],
+      isGenerateEmployeeCustomIDStart: false,
+    };
+  },
+
+  methods: {
+    async generateEmployeeCustomID() {
+      this.isGenerateEmployeeCustomIDStart = true;
+      const { customID } = await this.$store.dispatch(
+        GENERATE_EMPLOYEE_CUSTOM_ID
+      );
+      this.customID = customID;
+      this.isGenerateEmployeeCustomIDStart = false;
+    },
+
+    async fetchDepartments() {
+      const { departments } = await this.$store.dispatch(FETCH_DEPARTMENTS);
+      this.departments = departments;
+    },
+
+    async fetchDesignations() {
+      const { designations } = await this.$store.dispatch(FETCH_DESIGNATIONS);
+      this.designations = designations;
+    },
+  },
+
+  async created() {
+    await this.generateEmployeeCustomID();
+    await this.fetchDepartments();
+    await this.fetchDesignations();
+  },
+};
+</script>
