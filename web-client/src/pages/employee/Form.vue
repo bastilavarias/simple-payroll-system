@@ -1,5 +1,10 @@
 <template>
-  <v-card flat color="transparent">
+  <v-card
+    flat
+    tile
+    :color="isGetEmployeeInformationStart ? '' : 'transparent'"
+    :loading="isGetEmployeeInformationStart"
+  >
     <v-card-text>
       <v-row dense>
         <v-col cols="12">
@@ -318,6 +323,7 @@ export default {
       civilStatuses: ["Single", "Maried", "Divorced", "Separated", "Widowed"],
       bloodTypes: ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"],
       isSaveEmployeeStart: false,
+      isGetEmployeeInformationStart: false,
       isUpdateEmployeeStart: false,
     };
   },
@@ -426,12 +432,20 @@ export default {
     },
 
     async getEmployeeInformation() {
-      const { name, username } = await this.$store.dispatch(
-        GET_EMPLOYEE_INFORMATION,
-        this.employeeID
-      );
-      this.form.name = name;
-      this.form.username = username;
+      this.isGetEmployeeInformationStart = true;
+      const {
+        customID,
+        department,
+        designation,
+        profile,
+        benefit,
+      } = await this.$store.dispatch(GET_EMPLOYEE_INFORMATION, this.employeeID);
+      this.customID = customID;
+      this.form.departmentID = department.id;
+      this.form.designationID = designation.id;
+      this.form.profile = profile;
+      this.form.benefit = benefit;
+      this.isGetEmployeeInformationStart = false;
     },
 
     async updateEmployee() {
@@ -453,6 +467,9 @@ export default {
     await this.generateEmployeeCustomID();
     await this.fetchDepartments();
     await this.fetchDesignations();
+    if (this.isViewMode) {
+      await this.getEmployeeInformation();
+    }
   },
 };
 </script>
