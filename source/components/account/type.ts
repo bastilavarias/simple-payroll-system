@@ -5,6 +5,7 @@ export interface AccountForm {
 }
 
 export interface AccountInformation {
+  id: number;
   name: string;
   username: string;
   hashedPassword: string;

@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import EmployeeService from "./service";
+import AccountService from "../account/service";
 
 const EmployeeController = {
   generateCustomID: async (request: Request, response: Response) => {
@@ -87,6 +88,18 @@ const EmployeeController = {
         },
       };
       const result = await EmployeeService.save(employeeForm);
+      if (Object.keys(result.error).length > 0) throw result.error;
+      delete result.error;
+      response.status(200).json(result);
+    } catch (error) {
+      console.log(error);
+      response.status(400).json(error);
+    }
+  },
+
+  fetch: async (request: Request, response: Response) => {
+    try {
+      const result = await EmployeeService.fetch();
       if (Object.keys(result.error).length > 0) throw result.error;
       delete result.error;
       response.status(200).json(result);

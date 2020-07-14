@@ -1,6 +1,6 @@
 const query = `create table if not exists employee ( 
     id serial primary key not null,
-    customID varchar(15) not null,
+    custom_id varchar(15) not null,
     department_id integer not null,
     designation_id integer not null,
     employee_profile_id integer not null,

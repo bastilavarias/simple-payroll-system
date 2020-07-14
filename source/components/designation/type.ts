@@ -5,6 +5,7 @@ export interface DesignationForm {
 }
 
 export interface DesignationInformation {
+  id: number;
   name: string;
   description: string;
   dailySalary: number;

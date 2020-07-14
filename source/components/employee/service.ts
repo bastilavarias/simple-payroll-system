@@ -43,6 +43,15 @@ const EmployeeService = {
     };
   },
 
+  fetch: async () => {
+    const error = {};
+    const employees = await EmployeeModel.fetch();
+    return {
+      error,
+      employees,
+    };
+  },
+
   formatCustomID: (tableRowsCount: number): string => {
     let lastPart = "";
     if (tableRowsCount >= 0 && tableRowsCount <= 9)

@@ -4,6 +4,7 @@ export interface DepartmentForm {
 }
 
 export interface DepartmentInformation {
+  id: number;
   name: string;
   description: string;
 }
