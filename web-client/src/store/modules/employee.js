@@ -20,9 +20,9 @@ const EmployeeStoreModule = {
       }
     },
 
-    [SAVE_EMPLOYEE]: async (context, { name, username, password }) => {
+    [SAVE_EMPLOYEE]: async (context, employeeForm) => {
       try {
-        const result = await EmployeeHTTP.save({ name, username, password });
+        const result = await EmployeeHTTP.save(employeeForm);
         const { message } = result.data;
         return message;
       } catch (error) {

@@ -61,16 +61,32 @@
           <p class="v-subheader font-weight-bold pl-0">Profile Information</p>
           <v-row dense>
             <v-col cols="12" md="3">
-              <v-text-field label="First Name" outlined></v-text-field>
+              <v-text-field
+                label="First Name"
+                outlined
+                v-model="form.profile.firstName"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="3">
-              <v-text-field label="Middle Name" outlined></v-text-field>
+              <v-text-field
+                label="Middle Name"
+                outlined
+                v-model="form.profile.middleName"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="3">
-              <v-text-field label="Last Name" outlined></v-text-field>
+              <v-text-field
+                label="Last Name"
+                outlined
+                v-model="form.profile.lastName"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="3">
-              <v-text-field label="Extension" outlined></v-text-field>
+              <v-text-field
+                label="Extension"
+                outlined
+                v-model="form.profile.extensionName"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="5">
               <custom-date-input
@@ -86,6 +102,7 @@
                 :items="cities"
                 item-value="name"
                 item-text="name"
+                v-model="form.profile.birthPlace"
               >
                 <template v-slot:selection="{ item }"
                   ><span class="text-capitalize">{{
@@ -95,7 +112,12 @@
               >
             </v-col>
             <v-col cols="12" md="2">
-              <v-select label="Sex" outlined :items="sexes"></v-select>
+              <v-select
+                label="Sex"
+                outlined
+                :items="sexes"
+                v-model="form.profile.sex"
+              ></v-select>
             </v-col>
             <v-col cols="12">
               <v-autocomplete
@@ -104,6 +126,7 @@
                 :items="nationalities"
                 item-value="label"
                 item-text="label"
+                v-model="form.profile.citizenship"
               >
                 <template v-slot:selection="{ item }"
                   ><span class="text-capitalize">{{
@@ -117,25 +140,43 @@
                 label="Civil Status"
                 outlined
                 :items="civilStatuses"
+                v-model="form.profile.civilStatus"
               ></v-select>
             </v-col>
             <v-col cols="12" md="8">
-              <v-text-field label="Address" outlined></v-text-field>
+              <v-text-field
+                label="Address"
+                outlined
+                v-model="form.profile.address"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="4">
-              <v-text-field label="Contact No." outlined></v-text-field>
+              <v-text-field
+                label="Contact No."
+                outlined
+                v-model="form.profile.contactNumber"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="5">
-              <v-text-field label="Height (meters)" outlined></v-text-field>
+              <v-text-field
+                label="Height (meters)"
+                outlined
+                v-model="form.profile.height"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="5">
-              <v-text-field label="Weight (kilograms)" outlined></v-text-field>
+              <v-text-field
+                label="Weight (kilograms)"
+                outlined
+                v-model="form.profile.weight"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="2">
               <v-select
                 label="Blood Type"
                 outlined
                 :items="bloodTypes"
+                v-model="form.profile.bloodType"
               ></v-select>
             </v-col>
           </v-row>
@@ -146,22 +187,46 @@
           </p>
           <v-row dense>
             <v-col cols="12" md="6">
-              <v-text-field label="GSIS ID No." outlined></v-text-field>
+              <v-text-field
+                label="GSIS ID No."
+                outlined
+                v-model="form.benefit.gsisNumber"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="PAG-IBIG ID No." outlined></v-text-field>
+              <v-text-field
+                label="PAG-IBIG ID No."
+                outlined
+                v-model="form.benefit.pagIbigIDNumber"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="PHILHEALTH No." outlined></v-text-field>
+              <v-text-field
+                label="PHILHEALTH No."
+                outlined
+                v-model="form.benefit.philhealthNumber"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="SSS No." outlined></v-text-field>
+              <v-text-field
+                label="SSS No."
+                outlined
+                v-model="form.benefit.sssNumber"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="TIN No." outlined></v-text-field>
+              <v-text-field
+                label="TIN No."
+                outlined
+                v-model="form.benefit.tinNumber"
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="Agency Employee No." outlined></v-text-field>
+              <v-text-field
+                label="Agency Employee No."
+                outlined
+                v-model="form.benefit.agencyEmployeeNumber"
+              ></v-text-field>
             </v-col>
           </v-row>
         </v-col>
@@ -169,9 +234,25 @@
     </v-card-text>
     <v-card-actions>
       <div class="flex-grow-1"></div>
-      <v-btn color="primary">
+      <v-btn
+        color="primary"
+        :disabled="!isFormValid"
+        :loading="isSaveEmployeeStart"
+        @click="saveEmployee"
+        v-if="!isViewMode"
+      >
         <span class="mr-1">Save Employee</span>
         <v-icon>mdi-content-save</v-icon>
+      </v-btn>
+      <v-btn
+        color="secondary"
+        :disabled="!isFormValid"
+        :loading="isUpdateEmployeeStart"
+        @click="updateEmployee"
+        v-if="isViewMode"
+      >
+        <span class="mr-1">Update Employee</span>
+        <v-icon>mdi-pencil</v-icon>
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -184,6 +265,12 @@ import { GENERATE_EMPLOYEE_CUSTOM_ID } from "../../store/types/employee";
 import CustomDateInput from "../../components/custom/DatePickerInput";
 import cities from "../../assets/data/cities.json";
 import nationalities from "../../assets/data/nationalities.json";
+import {
+  GET_EMPLOYEE_INFORMATION,
+  SAVE_EMPLOYEE,
+  UPDATE_EMPLOYEE,
+} from "../../store/types/employee";
+import { SHOW_GLOBAL_NOTIFICATION } from "../../store/types/global";
 
 const defaultForm = {
   departmentID: null,
@@ -230,7 +317,51 @@ export default {
       nationalities: nationalities,
       civilStatuses: ["Single", "Maried", "Divorced", "Separated", "Widowed"],
       bloodTypes: ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"],
+      isSaveEmployeeStart: false,
+      isUpdateEmployeeStart: false,
     };
+  },
+  computed: {
+    isFormValid() {
+      const { departmentID, designationID, profile, benefit } = this.form;
+      const {
+        firstName,
+        middleName,
+        lastName,
+        birthDate,
+        birthPlace,
+        sex,
+        citizenship,
+        civilStatus,
+        address,
+      } = profile;
+      return (
+        departmentID &&
+        designationID &&
+        firstName &&
+        middleName &&
+        lastName &&
+        birthDate &&
+        birthPlace &&
+        sex &&
+        citizenship &&
+        civilStatus &&
+        address
+      );
+    },
+
+    operation() {
+      return this.$route.params.operation;
+    },
+
+    employeeID() {
+      const id = this.$route.params.employeeID;
+      return id ? id : 0;
+    },
+
+    isViewMode() {
+      return this.operation === "view";
+    },
   },
 
   methods: {
@@ -255,6 +386,68 @@ export default {
       const { designations } = await this.$store.dispatch(FETCH_DESIGNATIONS);
       this.designations = designations;
       this.isFetchDesignationsStart = false;
+    },
+
+    async saveEmployee() {
+      this.isSaveEmployeeStart = true;
+      const payload = this.form;
+      const saveEmployeeMessage = await this.$store.dispatch(
+        SAVE_EMPLOYEE,
+        payload
+      );
+      if (saveEmployeeMessage) {
+        this.$store.commit(SHOW_GLOBAL_NOTIFICATION, saveEmployeeMessage);
+        await this.generateEmployeeCustomID();
+        this.clearForm();
+      }
+      this.isSaveEmployeeStart = false;
+    },
+
+    clearForm() {
+      this.form.departmentID = null;
+      this.form.designationID = null;
+      this.form.profile.firstName = "";
+      this.form.profile.middleName = "";
+      this.form.profile.lastName = "";
+      this.form.profile.extensionName = "";
+      this.form.profile.birthDate = null;
+      this.form.profile.birthPlace = "";
+      this.form.profile.sex = "";
+      this.form.profile.citizenship = "";
+      this.form.profile.civilStatus = "";
+      this.form.profile.address = "";
+      this.form.profile.contactNumber = "";
+      this.form.profile.height = "";
+      this.form.profile.weight = "";
+      this.form.profile.bloodType = "";
+      this.form.benefit.pagIbigIDNumber = "";
+      this.form.benefit.philhealthNumber = "";
+      this.form.benefit.sssNumber = "";
+      this.form.benefit.tinNumber = "";
+      this.form.benefit.agencyEmployeeNumber = "";
+    },
+
+    async getEmployeeInformation() {
+      const { name, username } = await this.$store.dispatch(
+        GET_EMPLOYEE_INFORMATION,
+        this.employeeID
+      );
+      this.form.name = name;
+      this.form.username = username;
+    },
+
+    async updateEmployee() {
+      this.isUpdateEmployeeStart = true;
+      const payload = this.form;
+      const updateEmployeeMessage = await this.$store.dispatch(
+        UPDATE_EMPLOYEE,
+        payload
+      );
+      if (updateEmployeeMessage) {
+        this.$store.commit(SHOW_GLOBAL_NOTIFICATION, updateEmployeeMessage);
+        await this.$router.push({ name: "employee-table" });
+      }
+      this.isUpdateEmployeeStart = false;
     },
   },
 

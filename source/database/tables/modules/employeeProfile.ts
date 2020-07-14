@@ -9,7 +9,7 @@ const query = `create table if not exists employee_profile (
     sex varchar(10) not null,   
     citizenship varchar(75) not null,
     civil_status varchar(15) not null,
-    address text,
+    address text not null,
     contact_number text,
     height varchar(15),
     weight varchar(15),
