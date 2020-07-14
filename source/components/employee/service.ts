@@ -28,6 +28,12 @@ const EmployeeService = {
       employeeForm.benefit
     );
     const { customID } = await EmployeeService.generateCustomID();
+    await EmployeeModel.save(
+      employeeForm,
+      customID,
+      savedEmployeeProfileID,
+      savedEmployeeBenefitID
+    );
   },
 
   formatCustomID: (tableRowsCount: number): string => {

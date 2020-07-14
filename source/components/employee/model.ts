@@ -1,4 +1,4 @@
-import { EmployeeBenefitForm, EmployeeProfileForm } from "./type";
+import { EmployeeBenefitForm, EmployeeForm, EmployeeProfileForm } from "./type";
 import Database from "../../database";
 
 const EmployeeModel = {
@@ -43,7 +43,9 @@ const EmployeeModel = {
     return result ? parseInt(result) : 0;
   },
 
-  saveBenefit: async (employeeBenefitForm: EmployeeBenefitForm) => {
+  saveBenefit: async (
+    employeeBenefitForm: EmployeeBenefitForm
+  ): Promise<number> => {
     const query = `insert into employee_benefit (gsis_number, pag_ibig_id_number, philhealth_number, sss_number, tin_number, agency_employee_number) values ($1, $2, $3, $4, $5, $6) returning id;`;
     const {
       gsisNumber,
@@ -64,6 +66,24 @@ const EmployeeModel = {
     const { rows } = await Database.execute(query, parameters);
     const result = rows[0].id;
     return result ? parseInt(result) : 0;
+  },
+
+  save: async (
+    employeeForm: EmployeeForm,
+    customID: string,
+    employeeProfileID: number,
+    employeeBenefitID: number
+  ) => {
+    const query = `insert into employee (customid, department_id, designation_id, employee_profile_id, employee_benefit_id) values ($1, $2, $3, $4, $5);`;
+    const { departmentID, designationID } = employeeForm;
+    const parameters = [
+      customID,
+      departmentID,
+      designationID,
+      employeeProfileID,
+      employeeBenefitID,
+    ];
+    await Database.execute(query, parameters);
   },
 };
 
