@@ -6,7 +6,7 @@ const EmployeeService = {
   generateCustomID: async () => {
     const error = {};
     const gotAccountTableRowsCount = await HelperModel.countTableRows(
-      `account`
+      `employee`
     );
     const formattedCustomID = EmployeeService.formatCustomID(
       gotAccountTableRowsCount
@@ -21,6 +21,8 @@ const EmployeeService = {
   },
 
   save: async (employeeForm: EmployeeForm) => {
+    let message = "";
+    const error = {};
     const savedEmployeeProfileID = await EmployeeModel.saveProfile(
       employeeForm.profile
     );
@@ -34,6 +36,11 @@ const EmployeeService = {
       savedEmployeeProfileID,
       savedEmployeeBenefitID
     );
+    message = "Employee was successfully saved.";
+    return {
+      message,
+      error,
+    };
   },
 
   formatCustomID: (tableRowsCount: number): string => {
