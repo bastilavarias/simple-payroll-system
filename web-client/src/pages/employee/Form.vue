@@ -325,6 +325,8 @@ export default {
       isSaveEmployeeStart: false,
       isGetEmployeeInformationStart: false,
       isUpdateEmployeeStart: false,
+      employeeProfileID: null,
+      employeeBenefitID: null,
     };
   },
   computed: {
@@ -445,12 +447,19 @@ export default {
       this.form.designationID = designation.id;
       this.form.profile = profile;
       this.form.benefit = benefit;
+      this.employeeProfileID = profile.id;
+      this.employeeBenefitID = benefit.id;
       this.isGetEmployeeInformationStart = false;
     },
 
     async updateEmployee() {
       this.isUpdateEmployeeStart = true;
-      const payload = this.form;
+      const payload = {
+        employeeID: this.employeeID,
+        employeeProfileID: this.employeeProfileID,
+        employeeBenefitID: this.employeeBenefitID,
+        ...this.form,
+      };
       const updateEmployeeMessage = await this.$store.dispatch(
         UPDATE_EMPLOYEE,
         payload

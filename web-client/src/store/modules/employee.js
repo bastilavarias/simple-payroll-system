@@ -50,17 +50,9 @@ const EmployeeStoreModule = {
       }
     },
 
-    [UPDATE_EMPLOYEE]: async (
-      context,
-      { employeeID, name, username, password }
-    ) => {
+    [UPDATE_EMPLOYEE]: async (context, employeeForm) => {
       try {
-        const result = await EmployeeHTTP.update({
-          employeeID,
-          name,
-          username,
-          password,
-        });
+        const result = await EmployeeHTTP.update(employeeForm);
         const { message } = result.data;
         return message;
       } catch (error) {
