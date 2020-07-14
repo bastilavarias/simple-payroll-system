@@ -118,30 +118,10 @@ const EmployeeModel = {
                                                      first_name     "firstName",
                                                      middle_name    "middleName",
                                                      last_name      "lastName",
-                                                     extension_name "extensionName",
-                                                     birth_date     "birthDate",
-                                                     birth_place    "birthPlace",
-                                                     sex,
-                                                     citizenship,
-                                                     civil_status   "civilStatus",
-                                                     address,
-                                                     contact_number "contactNumber",
-                                                     height,
-                                                     weight,
-                                                     blood_type     "bloodType"
+                                                     extension_name "extensionName"
                                               from employee_profile
-                                              where id = e.employee_profile_id) profile) profile,
-                                       (select row_to_json(benefit)
-                                        from (select id,
-                                                     gsis_number            "gsisNumber",
-                                                     pag_ibig_id_number     "pagIbigIDNumber",
-                                                     philhealth_number      "philhealthNumber",
-                                                     sss_number             "sssNumber",
-                                                     tin_number             "tinNumber",
-                                                     agency_employee_number "agencyEmployeeNumber"
-                                              from employee_benefit
-                                              where id = e.employee_benefit_id) benefit) benefit
-                                from employee e
+                                              where id = e.employee_profile_id) profile) profile
+                               from employee e
                                 where e.is_deleted = false
                                 order by e.id asc
                             ) employees;`;
@@ -290,14 +270,20 @@ const EmployeeModel = {
   },
 
   update: async (employeeID: number, employeeForm: EmployeeForm) => {
-    const query = `update employee set department_id = $1, designation_id = $2 where id = $3;`;
+    const query = `update employee
+                       set department_id  = $1,
+                           designation_id = $2
+                       where id = $3;`;
     const { departmentID, designationID } = employeeForm;
     const parameters = [departmentID, designationID, employeeID];
     await Database.execute(query, parameters);
   },
 
   remove: async (employeeID: number) => {
-    const query = `update employee set is_deleted = true, deleted_at = now() where id = $1;`;
+    const query = `update employee
+                       set is_deleted = true,
+                           deleted_at = now()
+                       where id = $1;`;
     const parameters = [employeeID];
     await Database.execute(query, parameters);
   },
