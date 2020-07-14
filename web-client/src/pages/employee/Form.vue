@@ -23,6 +23,7 @@
                 :items="departments"
                 item-value="id"
                 v-model="form.departmentID"
+                :loading="isFetchDepartmentsStart"
               >
                 <template v-slot:item="{ item }"
                   ><span class="text-capitalize">{{
@@ -42,6 +43,7 @@
                 item-value="id"
                 item-text="name"
                 v-model="form.designationID"
+                :loading="isFetchDesignationsStart"
               >
                 <template v-slot:item="{ item }"
                   ><span class="text-capitalize">{{
@@ -181,6 +183,8 @@ export default {
       departments: [],
       designations: [],
       isGenerateEmployeeCustomIDStart: false,
+      isFetchDepartmentsStart: false,
+      isFetchDesignationsStart: false,
     };
   },
 
@@ -195,13 +199,17 @@ export default {
     },
 
     async fetchDepartments() {
+      this.isFetchDepartmentsStart = true;
       const { departments } = await this.$store.dispatch(FETCH_DEPARTMENTS);
       this.departments = departments;
+      this.isFetchDepartmentsStart = false;
     },
 
     async fetchDesignations() {
+      this.isFetchDesignationsStart = true;
       const { designations } = await this.$store.dispatch(FETCH_DESIGNATIONS);
       this.designations = designations;
+      this.isFetchDesignationsStart = false;
     },
   },
 
