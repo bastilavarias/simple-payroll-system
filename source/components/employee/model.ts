@@ -126,7 +126,6 @@ const EmployeeModel = {
                                 order by e.id asc
                             ) employees;`;
     const { rows } = await Database.execute(query);
-    console.log(rows);
     return rows[0].json_agg ? rows[0].json_agg : [];
   },
 
