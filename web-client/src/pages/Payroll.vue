@@ -79,7 +79,7 @@
               ></v-text-field>
             </v-col>
           </v-row>
-          <p class="v-subheader font-weight-bold pl-0">Custom Deductions</p>
+          <p class="v-subheader font-weight-bold pl-0">Custom Deduction</p>
           <v-row dense>
             <v-col cols="12">
               <v-text-field
@@ -174,7 +174,7 @@
             :disabled="!isEmployeeInformationValid"
           >
             <v-subheader class="font-weight-bold white--text"
-              >Default Deductions</v-subheader
+              >Default Deduction</v-subheader
             >
             <v-list-item>
               <v-list-item-content>
@@ -226,7 +226,7 @@
             </v-list-item>
             <v-list-item>
               <v-list-item-content>
-                <v-list-item-subtitle>Total Deductions</v-list-item-subtitle>
+                <v-list-item-subtitle>Total Deduction</v-list-item-subtitle>
                 <v-list-item-title
                   >&#8369; {{ totalDeduction }}</v-list-item-title
                 >
