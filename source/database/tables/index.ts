@@ -5,6 +5,7 @@ import DesignationTableQuery from "./modules/designation";
 import EmployeeProfileTableQuery from "./modules/employeeProfile";
 import EmployeeProfileBenefitTableQuery from "./modules/employeeBenefit";
 import EmployeeTableQuery from "./modules/employee";
+import PayrollTableQuery from "./modules/payroll";
 
 const executeTables = async () => {
   await Database.execute(AccountTableQuery);
@@ -15,6 +16,7 @@ const executeTables = async () => {
   await Database.execute(EmployeeProfileBenefitTableQuery);
   await Database.execute(EmployeeTableQuery);
   await Database.execute(EmployeeTableQuery);
+  await Database.execute(PayrollTableQuery);
 };
 
 executeTables().then(() => console.log("Database tables created."));

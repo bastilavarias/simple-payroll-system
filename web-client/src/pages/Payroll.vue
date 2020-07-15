@@ -83,7 +83,7 @@
           <v-row dense>
             <v-col cols="12">
               <v-text-field
-                label="SSS Loans"
+                label="SSS Loan"
                 outlined
                 type="number"
                 v-model="sssLoanDeduction"
@@ -92,7 +92,7 @@
             </v-col>
             <v-col cols="12">
               <v-text-field
-                label="Pag-IBIG Loans"
+                label="Pag-IBIG Loan"
                 outlined
                 type="number"
                 v-model="pagIbigLoanDeduction"
@@ -101,7 +101,7 @@
             </v-col>
             <v-col cols="12" md="10">
               <v-text-field
-                label="Other Loans"
+                label="Other Loan"
                 outlined
                 type="number"
                 v-model="otherLoanDeduction"
