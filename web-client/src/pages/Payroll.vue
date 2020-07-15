@@ -282,11 +282,12 @@ export default {
     },
 
     employeeDailySalary() {
-      return this.isEmployeeInformationValid
+      const salary = this.isEmployeeInformationValid
         ? parseFloat(
             this.employeeInformation.designation.dailySalary.toString()
           )
         : 0;
+      return salary.toFixed(2);
     },
 
     isDatePeriodsValid() {
