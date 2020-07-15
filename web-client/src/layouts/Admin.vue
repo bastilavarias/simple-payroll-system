@@ -80,7 +80,7 @@ const defaultActions = [
   {
     text: "Payroll",
     icon: "mdi-database",
-    to: { name: "payroll-table" },
+    to: { name: "payroll" },
   },
 
   {

@@ -147,45 +147,9 @@ const routes = [
       },
 
       {
-        path: "payroll-management",
-        component: () => import("../pages/payroll/Index.vue"),
-        children: [
-          {
-            path: "",
-            name: "payroll-table",
-            component: () => import("../pages/payroll/Table.vue"),
-            meta: {
-              breadcrumbs: [
-                {
-                  text: "Payroll Table",
-                  icon: "mdi-table",
-                  to: { name: "payroll-table" },
-                },
-              ],
-            },
-          },
-
-          {
-            path: ":operation/:payrollID?",
-            name: "payroll-form",
-            component: () => import("../pages/payroll/Form"),
-            meta: {
-              breadcrumbs: [
-                {
-                  text: "Payroll Table",
-                  icon: "mdi-table",
-                  to: { name: "payroll-table" },
-                },
-
-                {
-                  text: "Payroll Form",
-                  icon: "mdi-form-select",
-                  to: { name: "payroll-form" },
-                },
-              ],
-            },
-          },
-        ],
+        path: "payroll",
+        name: "payroll",
+        component: () => import("../pages/Payroll"),
       },
 
       {
