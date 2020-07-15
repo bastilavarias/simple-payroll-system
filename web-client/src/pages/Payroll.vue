@@ -25,8 +25,8 @@
                 :items="employees"
                 item-value="id"
                 item-text="profile.lastName"
-                append-icon="mdi-refresh"
-                @click:append="fetchEmployees"
+                append-icon="mdi-close"
+                @click:append="clearForm"
                 v-model="employeeID"
               >
                 <template v-slot:item="{ item }">
@@ -120,7 +120,12 @@
           </v-row>
           <div class="d-flex justify-space-between align-center">
             <div class="flex-grow-1"></div>
-            <v-btn color="primary" :disabled="totalDaysActive === 0">
+            <v-btn
+              color="primary"
+              :disabled="totalDaysActive === 0"
+              :loading="isProcessPayrollStart"
+              @click="processPayroll"
+            >
               <span class="mr-1">Process Payroll</span>
               <v-icon>mdi-cogs</v-icon>
             </v-btn>
@@ -251,9 +256,12 @@
 import {
   FETCH_EMPLOYEES,
   GET_EMPLOYEE_INFORMATION,
+  SAVE_EMPLOYEE,
 } from "../store/types/employee";
 import Utilities from "../common/utilities";
 import CustomDateInput from "../components/custom/DatePickerInput";
+import { SHOW_GLOBAL_NOTIFICATION } from "../store/types/global";
+import { PROCESS_PAYROLL } from "../store/types/payroll";
 
 export default {
   components: { CustomDateInput },
@@ -273,6 +281,7 @@ export default {
       pagIbigLoanDeduction: 0,
       otherLoanDeduction: 0,
       totalDaysAbsent: 0,
+      isProcessPayrollStart: false,
     };
   },
 
@@ -417,6 +426,61 @@ export default {
         this.employeeID
       );
       this.isGetEmployeeInformationStart = false;
+    },
+
+    async processPayroll() {
+      this.isProcessPayrollStart = true;
+      const payload = {
+        employeeID: this.employeeID ? parseInt(this.employeeID) : 0,
+        periodDate: {
+          start: this.startPeriodDate ? this.startPeriodDate : "",
+          end: this.endPeriodDate ? this.endPeriodDate : "",
+        },
+        salaryDetails: {
+          basicSalary: this.basicSalary ? this.basicSalary : 0,
+          otherPay: this.otherPay ? this.otherPay : 0,
+        },
+        customDeduction: {
+          sssLoan: this.sssLoanDeduction ? this.sssLoanDeduction : 0,
+          pagIbigLoan: this.pagIbigLoanDeduction
+            ? this.pagIbigLoanDeduction
+            : 0,
+          otherLoan: this.otherLoanDeduction ? this.otherLoanDeduction : 0,
+          totalDaysAbsent: this.totalDaysAbsent ? this.totalDaysAbsent : 0,
+        },
+        defaultDeduction: {
+          sss: this.sssDeduction ? this.sssDeduction : 0,
+          pagIbig: this.pagIbigDeduction ? this.pagIbigDeduction : 0,
+          philhealth: this.philhealthDeduction ? this.philhealthDeduction : 0,
+          tax: this.taxDeduction ? this.taxDeduction : 0,
+        },
+        summary: {
+          totalSalary: this.totalSalary ? this.totalSalary : 0,
+          totalDeduction: this.totalDeduction ? this.totalDeduction : 0,
+          netPay: this.netPay ? this.netPay : 0,
+        },
+      };
+      const processedPayrollMessage = await this.$store.dispatch(
+        PROCESS_PAYROLL,
+        payload
+      );
+      if (processedPayrollMessage) {
+        this.$store.commit(SHOW_GLOBAL_NOTIFICATION, processedPayrollMessage);
+        this.clearForm();
+      }
+      this.isProcessPayrollStart = false;
+    },
+
+    clearForm() {
+      this.employeeID = null;
+      this.startPeriodDate = null;
+      this.endPeriodDate = null;
+      this.otherPay = 0;
+      this.sssLoanDeduction = 0;
+      this.pagIbigLoanDeduction = 0;
+      this.otherLoanDeduction = 0;
+      this.totalDaysAbsent = 0;
+      this.employeeInformation = Object.assign({}, {});
     },
   },
 
