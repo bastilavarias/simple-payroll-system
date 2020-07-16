@@ -29,7 +29,7 @@ const AccountService = {
   getInformation: async (accountID: number) => {
     const error = {};
     const gotAccountInformation = await AccountModel.getInformation(accountID);
-    delete gotAccountInformation.hashedPassword;
+    delete gotAccountInformation.password;
     return {
       information: gotAccountInformation,
       error,
@@ -40,7 +40,7 @@ const AccountService = {
     const error = {};
     let message = "";
     const gotAccountInformation = await AccountModel.getInformation(accountID);
-    let newHashedPassword = gotAccountInformation.hashedPassword;
+    let newHashedPassword = gotAccountInformation.password;
     if (accountForm.password) {
       newHashedPassword = await UtilityService.hashPassword(
         accountForm.password

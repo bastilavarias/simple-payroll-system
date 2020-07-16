@@ -20,7 +20,7 @@ const AccountModel = {
   },
 
   getInformation: async (accountID: number): Promise<AccountInformation> => {
-    const query = `select a.id, a.name, a.username, a.password "hashedPassword"
+    const query = `select a.id, a.name, a.username, a.password
                        from account a
                        where a.is_deleted = false
                          and a.id = $1;`;
@@ -29,10 +29,22 @@ const AccountModel = {
     return rows.length > 0 ? rows[0] : {};
   },
 
+  getInformationByUsername: async (
+    username: string
+  ): Promise<AccountInformation> => {
+    const query = `select a.id, a.name, a.username, a.password
+                       from account a
+                       where a.is_deleted = false
+                         and a.username = $1;`;
+    const parameters = [username];
+    const { rows } = await Database.execute(query, parameters);
+    return rows.length > 0 ? rows[0] : {};
+  },
+
   update: async (
     accountID: number,
     accountForm: AccountForm,
-    hashedPassword: string
+    newHashedPassword: string
   ) => {
     const query = `update account
                        set name     = $1,
@@ -40,7 +52,7 @@ const AccountModel = {
                            password = $3
                        where id = $4;`;
     const { name, username } = accountForm;
-    const parameters = [name, username, hashedPassword, accountID];
+    const parameters = [name, username, newHashedPassword, accountID];
     await Database.execute(query, parameters);
   },
 

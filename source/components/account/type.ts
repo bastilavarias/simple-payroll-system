@@ -8,5 +8,5 @@ export interface AccountInformation {
   id: number;
   name: string;
   username: string;
-  hashedPassword: string;
+  password: string;
 }
