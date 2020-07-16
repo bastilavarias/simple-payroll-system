@@ -4,6 +4,11 @@ import PayrollService from "./service";
 const PayrollController = {
   process: async (request: Request, response: Response) => {
     try {
+      // @ts-ignore
+      const accountID = request.user.accountID
+        ? // @ts-ignore
+          parseInt(request.user.accountID)
+        : 0;
       const payrollForm = {
         employeeID: request.body.employeeID
           ? parseInt(request.body.employeeID)
@@ -32,8 +37,8 @@ const PayrollController = {
           otherLoan: request.body.customDeduction.otherLoan
             ? parseFloat(request.body.customDeduction.otherLoan)
             : 0.0,
-          totalDaysAbsent: request.body.customDeduction.totalDaysAbsent
-            ? parseFloat(request.body.customDeduction.totalDaysAbsent)
+          absent: request.body.customDeduction.absent
+            ? parseFloat(request.body.customDeduction.absent)
             : 0.0,
         },
         defaultDeduction: {
@@ -51,6 +56,10 @@ const PayrollController = {
             : 0.0,
         },
         summary: {
+          basicSalaryWithoutAbsent: request.body.summary
+            .basicSalaryWithoutAbsent
+            ? parseFloat(request.body.summary.basicSalaryWithoutAbsent)
+            : 0.0,
           totalSalary: request.body.summary.totalSalary
             ? parseFloat(request.body.summary.totalSalary)
             : 0.0,
@@ -62,7 +71,7 @@ const PayrollController = {
             : 0.0,
         },
       };
-      const result = await PayrollService.process(payrollForm);
+      const result = await PayrollService.process(accountID, payrollForm);
       if (Object.keys(result.error).length > 0) throw result.error;
       delete result.error;
       response.status(200).json(result);

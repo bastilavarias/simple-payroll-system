@@ -12,7 +12,7 @@ export interface PayrollForm {
     sssLoan: number;
     pagIbigLoan: number;
     otherLoan: number;
-    totalDaysAbsent: number;
+    absent: number;
   };
   defaultDeduction: {
     sss: number;
@@ -21,6 +21,7 @@ export interface PayrollForm {
     tax: number;
   };
   summary: {
+    basicSalaryWithoutAbsent: number;
     totalSalary: number;
     totalDeduction: number;
     netPay: number;

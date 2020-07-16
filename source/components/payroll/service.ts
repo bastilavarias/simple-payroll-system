@@ -2,10 +2,10 @@ import { PayrollForm } from "./type";
 import PayrollModel from "./model";
 
 const PayrollService = {
-  process: async (payrollForm: PayrollForm) => {
+  process: async (accountID: number, payrollForm: PayrollForm) => {
     let message = "";
     const error = {};
-    await PayrollModel.process(payrollForm);
+    await PayrollModel.process(accountID, payrollForm);
     message = "Payroll was successfully processed.";
     return {
       message,
