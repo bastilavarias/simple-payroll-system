@@ -1,8 +1,8 @@
 import ApiService from "../common/apiService";
 
 const DesignationHTTP = {
-  save: async ({ name, description }) =>
-    ApiService.post("/designation", { name, description }),
+  save: async ({ name, description, dailySalary }) =>
+    ApiService.post("/designation", { name, description, dailySalary }),
   fetch: async () => ApiService.get("/designation"),
   getInformation: async (designationID) =>
     ApiService.get(`/designation/${designationID}`),

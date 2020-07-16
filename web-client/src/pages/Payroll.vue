@@ -110,7 +110,9 @@
             </v-col>
             <v-col cols="12" md="2">
               <v-text-field
-                label="No. Of Absents"
+                :label="`No. of Absent ${
+                  totalDaysAbsent > 0 ? `(${formatMoney(absentDeduction)})` : ''
+                }`"
                 outlined
                 type="number"
                 v-model="totalDaysAbsent"
@@ -328,6 +330,13 @@ export default {
       return salary;
     },
 
+    absentDeduction() {
+      let salary = 0;
+      if (this.totalDaysActive === 0) return salary;
+      salary = this.employeeDailySalary * this.totalDaysAbsent;
+      return salary;
+    },
+
     sssDeduction() {
       let deduction = 0;
       if (this.totalDaysActive === 0) return deduction;
@@ -369,6 +378,13 @@ export default {
       if (this.totalDaysActive === 0) return deduction;
       deduction = this.basicSalary * this.birTaxPercentage;
       return deduction.toFixed(2);
+    },
+
+    basicSalaryWithoutAbsent() {
+      let salary = 0;
+      if (this.totalDaysActive === 0) return salary;
+      salary = this.employeeDailySalary * this.totalDaysBetweenTwoDatePeriods;
+      return salary;
     },
 
     totalSalary() {
@@ -448,7 +464,7 @@ export default {
             ? this.pagIbigLoanDeduction
             : 0,
           otherLoan: this.otherLoanDeduction ? this.otherLoanDeduction : 0,
-          totalDaysAbsent: this.totalDaysAbsent ? this.totalDaysAbsent : 0,
+          absent: this.absentDeduction ? this.absentDeduction : 0,
         },
         defaultDeduction: {
           sss: this.sssDeduction ? this.sssDeduction : 0,
@@ -457,6 +473,9 @@ export default {
           tax: this.taxDeduction ? this.taxDeduction : 0,
         },
         summary: {
+          basicSalaryWithoutAbsent: this.basicSalaryWithoutAbsent
+            ? this.basicSalaryWithoutAbsent
+            : 0,
           totalSalary: this.totalSalary ? this.totalSalary : 0,
           totalDeduction: this.totalDeduction ? this.totalDeduction : 0,
           netPay: this.netPay ? this.netPay : 0,
