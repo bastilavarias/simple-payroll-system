@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import AccountService from "./service";
+import UtilityService from "../utility/service";
 
 const AccountController = {
   save: async (request: Request, response: Response) => {
@@ -10,7 +11,7 @@ const AccountController = {
         password: request.body.password ? request.body.password : "",
       };
       const result = await AccountService.save(accountForm);
-      if (Object.keys(result.error).length > 0) throw result.error;
+      if (UtilityService.checkErrorIfValid(result.error)) throw result.error;
       delete result.error;
       response.status(200).json(result);
     } catch (error) {

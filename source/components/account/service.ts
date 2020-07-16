@@ -5,7 +5,19 @@ import AccountModel from "./model";
 const AccountService = {
   save: async (accountForm: AccountForm) => {
     let message = "";
-    const error = {};
+    const error = { username: "" };
+    const gotAccountInformation = await AccountModel.getInformationByUsername(
+      accountForm.username
+    );
+    const isAccountUsernameExists =
+      Object.keys(gotAccountInformation).length > 0;
+    if (isAccountUsernameExists) {
+      error.username = "Username already exists.";
+      return {
+        error,
+        message,
+      };
+    }
     const hashedPassword = await UtilityService.hashPassword(
       accountForm.password
     );

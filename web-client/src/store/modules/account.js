@@ -1,21 +1,39 @@
 import {
+  CLEAR_ACCOUNT_ERROR,
   FETCH_ACCOUNTS,
   GET_ACCOUNT_INFORMATION,
   REMOVE_ACCOUNT,
   SAVE_ACCOUNT,
+  SET_ACCOUNT_ERROR,
   UPDATE_ACCOUNT,
 } from "../types/account";
 import AccountHTTP from "../../http/account";
 
+const defaultError = {
+  username: "",
+};
+
 const AccountStoreModule = {
+  state: {
+    error: Object.assign({}, defaultError),
+  },
+
+  mutations: {
+    [SET_ACCOUNT_ERROR]: (state, error) =>
+      (state.error = Object.assign({}, error)),
+
+    [CLEAR_ACCOUNT_ERROR]: (state) =>
+      (state.error = Object.assign({}, defaultError)),
+  },
+
   actions: {
-    [SAVE_ACCOUNT]: async (context, { name, username, password }) => {
+    [SAVE_ACCOUNT]: async ({ commit }, { name, username, password }) => {
       try {
         const result = await AccountHTTP.save({ name, username, password });
         const { message } = result.data;
         return message;
       } catch (error) {
-        throw new Error(`[RWV] ApiService ${error}`);
+        commit(SET_ACCOUNT_ERROR, error.response.data);
       }
     },
 

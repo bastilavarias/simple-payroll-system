@@ -14,6 +14,8 @@
             label="Username"
             v-model="form.username"
             outlined
+            :error="!!accountError.username"
+            :error-messages="accountError.username"
           ></v-text-field>
         </v-col>
         <v-col cols="12" v-if="!isViewMode">
@@ -60,6 +62,7 @@
 
 <script>
 import {
+  CLEAR_ACCOUNT_ERROR,
   GET_ACCOUNT_INFORMATION,
   SAVE_ACCOUNT,
   UPDATE_ACCOUNT,
@@ -108,6 +111,10 @@ export default {
     isViewMode() {
       return this.operation === "view";
     },
+
+    accountError() {
+      return this.$store.state.account.error;
+    },
   },
 
   methods: {
@@ -123,6 +130,7 @@ export default {
         payload
       );
       if (saveAccountMessage) {
+        this.$store.commit(CLEAR_ACCOUNT_ERROR);
         this.$store.commit(SHOW_GLOBAL_NOTIFICATION, saveAccountMessage);
         this.clearForm();
       }
@@ -166,6 +174,10 @@ export default {
     if (this.isViewMode) {
       await this.getAccountInformation();
     }
+  },
+
+  destroyed() {
+    this.$store.commit(CLEAR_ACCOUNT_ERROR);
   },
 };
 </script>
