@@ -15,13 +15,13 @@ const PayrollService = {
 
   generatePaySlips: async (startPeriodDate: Date, endPeriodDate: Date) => {
     const error = {};
-    const reports = await PayrollModel.generatePaySlips(
+    const paySlips = await PayrollModel.generatePaySlips(
       startPeriodDate,
       endPeriodDate
     );
     return {
       error,
-      reports,
+      paySlips,
     };
   },
 };
