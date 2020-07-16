@@ -1,5 +1,5 @@
 import Database from "../../database";
-import { PayrollForm } from "./type";
+import { PayrollForm, PayrollPayslipInformation } from "./type";
 
 const PayrollModel = {
   process: async (accountID: number, payrollForm: PayrollForm) => {
@@ -41,7 +41,10 @@ const PayrollModel = {
     await Database.execute(query, parameters);
   },
 
-  generatePayslips: async (startPeriodDate: Date, endPeriodDate: Date) => {
+  generatePayslips: async (
+    startPeriodDate: Date,
+    endPeriodDate: Date
+  ): Promise<PayrollPayslipInformation[]> => {
     const query = `select json_agg(reports)
                        from (select p.id,
                                     (
