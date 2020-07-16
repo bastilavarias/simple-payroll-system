@@ -12,6 +12,18 @@ const PayrollService = {
       error,
     };
   },
+
+  generatePaySlips: async (startPeriodDate: Date, endPeriodDate: Date) => {
+    const error = {};
+    const reports = await PayrollModel.generatePaySlips(
+      startPeriodDate,
+      endPeriodDate
+    );
+    return {
+      error,
+      reports,
+    };
+  },
 };
 
 export default PayrollService;

@@ -71,6 +71,28 @@ const PayrollController = {
       response.status(400).json(error);
     }
   },
+
+  generatePaySlips: async (request: Request, response: Response) => {
+    try {
+      const startPeriodDate = request.params.startPeriodDate
+        ? request.params.startPeriodDate
+        : "";
+      const endPeriodDate = request.params.endPeriodDate
+        ? request.params.endPeriodDate
+        : "";
+      const result = await PayrollService.generatePaySlips(
+        // @ts-ignore
+        startPeriodDate,
+        endPeriodDate
+      );
+      if (Object.keys(result.error).length > 0) throw result.error;
+      delete result.error;
+      response.status(200).json(result);
+    } catch (error) {
+      console.log(error);
+      response.status(400).json(error);
+    }
+  },
 };
 
 export default PayrollController;
