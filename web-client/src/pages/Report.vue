@@ -58,7 +58,7 @@
         </template>
         <template v-slot:item.netPay="{ item }">
           <span class="font-weight-bold success--text">
-            &#8369; {{ item.summary.netPay }}
+            {{ formatMoney(item.summary.netPay) }}
           </span>
         </template>
         <template v-slot:item.action="{ item }">

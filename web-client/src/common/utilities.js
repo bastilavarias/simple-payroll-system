@@ -1,4 +1,5 @@
 import moment from "moment";
+import numberFormatter from "number-formatter";
 
 const Utilities = {
   methods: {
@@ -14,6 +15,10 @@ const Utilities = {
       return `${firstName} ${
         middleName ? `${this.getTextFirstLetter(middleName)}.` : ""
       } ${lastName} ${extension ? `${extension.toUpperCase()}` : ""} `;
+    },
+
+    formatMoney(money) {
+      return money > 0 ? numberFormatter("₱ #,###.00", money) : `₱ 0.00`;
     },
   },
 };

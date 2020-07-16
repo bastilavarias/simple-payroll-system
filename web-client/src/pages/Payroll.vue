@@ -167,7 +167,7 @@
               <v-list-item-content>
                 <v-list-item-subtitle>Daily Salary</v-list-item-subtitle>
                 <v-list-item-title>
-                  {{ `&#8369; ${this.employeeDailySalary}` }}</v-list-item-title
+                  {{ formatMoney(this.employeeDailySalary) }}</v-list-item-title
                 >
               </v-list-item-content>
             </v-list-item>
@@ -184,33 +184,33 @@
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-subtitle>SSS</v-list-item-subtitle>
-                <v-list-item-title
-                  >&#8369; {{ sssDeduction }}</v-list-item-title
-                >
+                <v-list-item-title>{{
+                  formatMoney(sssDeduction)
+                }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-subtitle>Pag-IBIG</v-list-item-subtitle>
-                <v-list-item-title
-                  >&#8369; {{ pagIbigDeduction }}</v-list-item-title
-                >
+                <v-list-item-title>{{
+                  formatMoney(pagIbigDeduction)
+                }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-subtitle>PhilHealth</v-list-item-subtitle>
-                <v-list-item-title
-                  >&#8369; {{ philhealthDeduction }}</v-list-item-title
-                >
+                <v-list-item-title>{{
+                  formatMoney(philhealthDeduction)
+                }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-subtitle>Tax</v-list-item-subtitle>
-                <v-list-item-title
-                  >&#8369; {{ taxDeduction }}</v-list-item-title
-                >
+                <v-list-item-title>{{
+                  formatMoney(taxDeduction)
+                }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-card>
@@ -226,23 +226,25 @@
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-subtitle>Total Salary</v-list-item-subtitle>
-                <v-list-item-title>&#8369; {{ totalSalary }}</v-list-item-title>
+                <v-list-item-title>{{
+                  formatMoney(totalSalary)
+                }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-subtitle>Total Deduction</v-list-item-subtitle>
-                <v-list-item-title
-                  >&#8369; {{ totalDeduction }}</v-list-item-title
-                >
+                <v-list-item-title>{{
+                  formatMoney(totalDeduction)
+                }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-subtitle>Net Pay</v-list-item-subtitle>
-                <v-list-item-title class="success--text font-weight-bold"
-                  >&#8369; {{ netPay }}</v-list-item-title
-                >
+                <v-list-item-title class="success--text font-weight-bold">{{
+                  formatMoney(netPay)
+                }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-card>

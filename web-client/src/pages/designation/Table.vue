@@ -29,7 +29,7 @@
           <span class="text-capitalize">{{ item.description }}</span>
         </template>
         <template v-slot:item.dailySalary="{ item }">
-          <span>&#8369; {{ item.dailySalary }}</span>
+          <span>{{ formatMoney(item.dailySalary) }}</span>
         </template>
         <template v-slot:item.actions="{ item }">
           <v-btn icon color="secondary" @click="viewDesignation(item.id)">
@@ -63,6 +63,7 @@ import {
 } from "../../store/types/designation";
 import CustomAlertDialog from "../../components/custom/AlertDialog";
 import { SHOW_GLOBAL_NOTIFICATION } from "../../store/types/global";
+import Utilities from "../../common/utilities";
 
 const defaultTableHeaders = [
   {
@@ -88,6 +89,9 @@ const defaultTableHeaders = [
 
 export default {
   components: { CustomAlertDialog },
+
+  mixins: [Utilities],
+
   data() {
     return {
       tableHeaders: defaultTableHeaders,
