@@ -5,9 +5,9 @@ const PayrollController = {
   process: async (request: Request, response: Response) => {
     try {
       // @ts-ignore
-      const accountID = request.user.accountID
+      const accountID = request.user.account.id
         ? // @ts-ignore
-          parseInt(request.user.accountID)
+          parseInt(request.user.account.id)
         : 0;
       const payrollForm = {
         employeeID: request.body.employeeID

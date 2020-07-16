@@ -83,7 +83,7 @@ const PayrollModel = {
                                               select p.sss_loan_deduction      "sssLoan",
                                                      p.pag_ibig_loan_deduction "pagIbigLoan",
                                                      p.other_loan_deduction    "otherLoan",
-                                                     p.total_days_absent       "totalDaysAbsent"
+                                                     p.absent_deduction        "absent"
                                           ) customDeduction)  "customDeduction",
                                     (select row_to_json(defaultDeduction)
                                      from (
@@ -93,7 +93,8 @@ const PayrollModel = {
                                                      p.tax_deduction        tax
                                           ) defaultDeduction) "defaultDeduction",
                                     (select row_to_json(summary)
-                                     from (select p.total_salary    "totalSalary",
+                                     from (select p.basic_salary_without_absent    "basicSalaryWithoutAbsent",
+                                                  p.total_salary    "totalSalary",
                                                   p.total_deduction "totalDeduction",
                                                   p.net_pay         "netPay"
                                           ) summary)          summary

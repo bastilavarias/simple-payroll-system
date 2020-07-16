@@ -187,15 +187,10 @@
                   }}
                 </td>
               </tr>
-              <tr v-if="payslipInformation.customDeduction.totalDaysAbsent > 0">
-                <td>Absents</td>
+              <tr v-if="payslipInformation.customDeduction.absent > 0">
+                <td>Absent</td>
                 <td>
-                  {{
-                    formatMoney(
-                      payslipInformation.customDeduction.totalDaysAbsent *
-                        payslipInformation.employee.designation.dailySalary
-                    )
-                  }}
+                  {{ formatMoney(payslipInformation.customDeduction.absent) }}
                 </td>
               </tr>
             </tbody>
@@ -214,8 +209,7 @@
                 <td>
                   {{
                     formatMoney(
-                      payslipInformation.employee.designation.dailySalary *
-                        totalDaysBetweenTwoDatePeriods
+                      payslipInformation.summary.basicSalaryWithoutAbsent
                     )
                   }}
                 </td>
