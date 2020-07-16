@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from "../store";
+import { GET_AUTHENTICATED_CREDENTIALS } from "../store/types/authentication";
 
 Vue.use(VueRouter);
 
@@ -19,6 +21,9 @@ const routes = [
   {
     path: "/admin",
     component: () => import("../layouts/Admin"),
+    meta: {
+      requiresAuth: true,
+    },
     children: [
       {
         path: "employee-management",
@@ -207,6 +212,20 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach(async (to, from, next) => {
+  await store.dispatch(GET_AUTHENTICATED_CREDENTIALS);
+  const authentication = store.state.authentication;
+  const credentials = authentication.credentials;
+  const isAuthenticated = authentication.isAuthenticated;
+  const isProtectedRoute = to.matched.some(
+    (record) => record.meta.requiresAuth
+  );
+  if (isProtectedRoute && !isAuthenticated) return next({ name: "login" });
+  if (to.name === "login" && isAuthenticated)
+    return next({ name: "employee-table" });
+  next();
 });
 
 export default router;

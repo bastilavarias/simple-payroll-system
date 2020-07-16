@@ -6,6 +6,7 @@ import DepartmentStoreModule from "./modules/department";
 import DesignationStoreModule from "./modules/designation";
 import EmployeeStoreModule from "./modules/employee";
 import PayrollStoreModule from "./modules/payroll";
+import AuthenticationStoreModule from "./modules/authentication";
 
 Vue.use(Vuex);
 
@@ -17,5 +18,6 @@ export default new Vuex.Store({
     designation: DesignationStoreModule,
     employee: EmployeeStoreModule,
     payroll: PayrollStoreModule,
+    authentication: AuthenticationStoreModule,
   },
 });

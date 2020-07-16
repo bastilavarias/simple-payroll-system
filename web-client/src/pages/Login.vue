@@ -13,6 +13,8 @@
             v-model="form.username"
             outlined
             label="Username"
+            :error="!!authenticationError.username"
+            :error-messages="authenticationError.username"
           ></v-text-field>
         </v-col>
         <v-col cols="12">
@@ -20,6 +22,8 @@
             :password.sync="form.password"
             outlined
             label="Password"
+            :error="!!authenticationError.password"
+            :error-messages="authenticationError.password"
           ></custom-password-field>
         </v-col>
         <v-col cols="12">
@@ -38,6 +42,10 @@
 </template>
 <script>
 import CustomPasswordField from "../components/custom/PasswordField";
+import {
+  AUTHENTICATION_LOGIN,
+  CLEAR_AUTHENTICATION_ERROR,
+} from "../store/types/authentication";
 
 const defaultForm = {
   username: "",
@@ -49,6 +57,7 @@ export default {
   data() {
     return {
       form: Object.assign({}, defaultForm),
+      defaultForm,
       isLoginStart: false,
     };
   },
@@ -58,10 +67,30 @@ export default {
       const { username, password } = this.form;
       return username && password;
     },
+    authenticationError() {
+      return this.$store.state.authentication.error;
+    },
+    isAuthenticated() {
+      return this.$store.state.authentication.isAuthenticated;
+    },
+    authenticatedCredentials() {
+      return this.$store.state.authentication.credentials;
+    },
   },
 
   methods: {
-    login() {},
+    async login() {
+      this.isLoginStart = true;
+      await this.$store.dispatch(AUTHENTICATION_LOGIN, this.form);
+      this.isLoginStart = false;
+      if (this.isAuthenticated) {
+        await this.$router.push({ name: "employee-table" });
+      }
+    },
+  },
+
+  destroyed() {
+    this.$store.commit(CLEAR_AUTHENTICATION_ERROR);
   },
 };
 </script>
