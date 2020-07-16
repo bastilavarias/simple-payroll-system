@@ -39,7 +39,8 @@ const PayrollModel = {
 
   generatePayslips: async (startPeriodDate: Date, endPeriodDate: Date) => {
     const query = `select json_agg(reports)
-                       from (select (
+                       from (select p.id,
+                                    (
                                         select row_to_json(employee)
                                         from (select e.id,
                                                      e.custom_id                                       "customID",
