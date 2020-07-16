@@ -72,7 +72,7 @@ const PayrollController = {
     }
   },
 
-  generatePaySlips: async (request: Request, response: Response) => {
+  generatePayslips: async (request: Request, response: Response) => {
     try {
       const startPeriodDate = request.params.startPeriodDate
         ? request.params.startPeriodDate
@@ -80,7 +80,7 @@ const PayrollController = {
       const endPeriodDate = request.params.endPeriodDate
         ? request.params.endPeriodDate
         : "";
-      const result = await PayrollService.generatePaySlips(
+      const result = await PayrollService.generatePayslips(
         // @ts-ignore
         startPeriodDate,
         endPeriodDate

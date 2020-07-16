@@ -6,7 +6,7 @@ const PayrollRouter = Express.Router();
 PayrollRouter.post("/", PayrollController.process);
 PayrollRouter.get(
   "/:startPeriodDate/:endPeriodDate",
-  PayrollController.generatePaySlips
+  PayrollController.generatePayslips
 );
 
 export default PayrollRouter;

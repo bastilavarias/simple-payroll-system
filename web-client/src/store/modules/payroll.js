@@ -1,4 +1,4 @@
-import { PAYROLL_GENERATE_PAY_SLIPS, PROCESS_PAYROLL } from "../types/payroll";
+import { PAYROLL_GENERATE_PAYSLIPS, PROCESS_PAYROLL } from "../types/payroll";
 import PayrollHTTP from "../../http/payroll";
 
 const PayrollStoreModule = {
@@ -13,17 +13,17 @@ const PayrollStoreModule = {
       }
     },
 
-    [PAYROLL_GENERATE_PAY_SLIPS]: async (
+    [PAYROLL_GENERATE_PAYSLIPS]: async (
       context,
       { startPeriodDate, endPeriodDate }
     ) => {
       try {
-        const result = await PayrollHTTP.generatePaySlips(
+        const result = await PayrollHTTP.generatePayslips(
           startPeriodDate,
           endPeriodDate
         );
-        const { paySlips } = result.data;
-        return paySlips;
+        const { payslips } = result.data;
+        return payslips;
       } catch (error) {
         throw new Error(`[RWV] ApiService ${error}`);
       }

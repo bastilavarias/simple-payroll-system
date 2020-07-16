@@ -30,7 +30,7 @@
               x-large
               block
               :disabled="totalDaysBetweenTwoDatePeriods === 0"
-              @click="generatePaySlips"
+              @click="generatePayslips"
             >
               <span class="mr-1">Process</span>
               <v-icon x-large>mdi-cogs</v-icon>
@@ -41,8 +41,8 @@
       <v-data-table
         hide-default-footer
         :headers="tableHeaders"
-        :items="paySlips"
-        :loading="isGeneratePaySlipsStart"
+        :items="payslips"
+        :loading="isGeneratePayslipsStart"
       >
         <template v-slot:item.period="{ item }">
           {{ formatDate(item.period.start) }} -
@@ -68,12 +68,17 @@
         </template>
       </v-data-table>
     </v-card>
+    <v-dialog width="800" v-model="isPayslipInformationDialogShow">
+      <v-card>
+        <v-card-title></v-card-title>
+      </v-card>
+    </v-dialog>
   </section>
 </template>
 
 <script>
 import CustomDateInput from "../components/custom/DatePickerInput";
-import { PAYROLL_GENERATE_PAY_SLIPS } from "../store/types/payroll";
+import { PAYROLL_GENERATE_PAYSLIPS } from "../store/types/payroll";
 import Utilities from "../common/utilities";
 
 const defaultTableHeaders = [
@@ -109,8 +114,9 @@ export default {
       tableHeaders: defaultTableHeaders,
       startPeriodDate: null,
       endPeriodDate: null,
-      isGeneratePaySlipsStart: false,
-      paySlips: [],
+      isGeneratePayslipsStart: false,
+      payslips: [],
+      isPayslipInformationDialogShow: false,
     };
   },
 
@@ -132,17 +138,17 @@ export default {
   },
 
   methods: {
-    async generatePaySlips() {
-      this.isGeneratePaySlipsStart = true;
+    async generatePayslips() {
+      this.isGeneratePayslipsStart = true;
       const payload = {
         startPeriodDate: this.startPeriodDate ? this.startPeriodDate : "",
         endPeriodDate: this.endPeriodDate ? this.endPeriodDate : "",
       };
-      this.paySlips = await this.$store.dispatch(
-        PAYROLL_GENERATE_PAY_SLIPS,
+      this.payslips = await this.$store.dispatch(
+        PAYROLL_GENERATE_PAYSLIPS,
         payload
       );
-      this.isGeneratePaySlipsStart = false;
+      this.isGeneratePayslipsStart = false;
     },
   },
 };

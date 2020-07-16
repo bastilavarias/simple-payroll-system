@@ -37,7 +37,7 @@ const PayrollModel = {
     await Database.execute(query, parameters);
   },
 
-  generatePaySlips: async (startPeriodDate: Date, endPeriodDate: Date) => {
+  generatePayslips: async (startPeriodDate: Date, endPeriodDate: Date) => {
     const query = `select json_agg(reports)
                        from (select (
                                         select row_to_json(employee)
