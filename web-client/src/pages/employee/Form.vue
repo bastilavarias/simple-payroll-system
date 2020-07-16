@@ -51,13 +51,23 @@
                 :loading="isFetchDesignationsStart"
               >
                 <template v-slot:item="{ item }"
-                  ><span class="text-capitalize">{{
-                    item.name
-                  }}</span></template
+                  ><span class="text-capitalize"
+                    ><span class="mr-1">{{ item.name }}</span
+                    >(<span class="grey--text font-weight-bold">{{
+                      formatMoney(item.dailySalary)
+                    }}</span
+                    >)</span
+                  ></template
                 >
-                <template v-slot:selection="{ item }">
-                  <span class="text-capitalize">{{ item.name }}</span>
-                </template>
+                <template v-slot:selection="{ item }"
+                  ><span class="text-capitalize"
+                    ><span class="mr-1">{{ item.name }}</span
+                    >(<span class="grey--text font-weight-bold">{{
+                      formatMoney(item.dailySalary)
+                    }}</span
+                    >)</span
+                  ></template
+                >
               </v-autocomplete>
             </v-col>
           </v-row>
@@ -276,6 +286,7 @@ import {
   UPDATE_EMPLOYEE,
 } from "../../store/types/employee";
 import { SHOW_GLOBAL_NOTIFICATION } from "../../store/types/global";
+import Utilities from "../../common/utilities";
 
 const defaultForm = {
   departmentID: null,
@@ -308,6 +319,9 @@ const defaultForm = {
 
 export default {
   components: { CustomDateInput },
+
+  mixins: [Utilities],
+
   data() {
     return {
       form: Object.assign({}, defaultForm),
