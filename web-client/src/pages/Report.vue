@@ -266,9 +266,7 @@
         </v-card-text>
         <v-card-actions>
           <div class="flex-grow-1"></div>
-          <v-btn text @click="isPayslipInformationDialogShow = false"
-            >Close</v-btn
-          >
+          <v-btn text @click="closePayslipInformationDialog">Close</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -351,6 +349,12 @@ export default {
     },
   },
 
+  watch: {
+    isPayslipInformationDialogShow(isOpen) {
+      if (!isOpen) this.closePayslipInformationDialog();
+    },
+  },
+
   methods: {
     async generatePayslips() {
       this.payslips = [];
@@ -369,6 +373,11 @@ export default {
     openPayslipInformationDialog(id) {
       this.selectedPayslipID = id;
       this.isPayslipInformationDialogShow = true;
+    },
+
+    closePayslipInformationDialog() {
+      this.selectedPayslipID = null;
+      this.isPayslipInformationDialogShow = false;
     },
   },
 };
