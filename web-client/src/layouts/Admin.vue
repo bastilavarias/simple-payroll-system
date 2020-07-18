@@ -8,7 +8,7 @@
         </span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn exact color="primary" depressed>Logout</v-btn>
+      <v-btn exact color="primary" depressed @click="logout">Logout</v-btn>
     </v-app-bar>
     <v-navigation-drawer app clipped>
       <v-list>
@@ -21,7 +21,7 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title class="text-capitalize font-weight-bold">
-              Admin Name
+              {{ authenticatedCredentials.account.name }}
             </v-list-item-title>
             <v-list-item-subtitle class="text-capitalize"
               >Administrator</v-list-item-subtitle
@@ -50,12 +50,15 @@
     <v-main>
       <v-container>
         <router-view></router-view>
+        <custom-global-notification-snackbar></custom-global-notification-snackbar>
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
+import CustomGlobalNotificationSnackbar from "../components/custom/GlobalNotificationSnackbar";
+import { PURGE_AUTHENTICATION } from "../store/types/authentication";
 const defaultActions = [
   {
     text: "Employees",
@@ -78,7 +81,7 @@ const defaultActions = [
   {
     text: "Payroll",
     icon: "mdi-database",
-    to: { name: "payroll-table" },
+    to: { name: "payroll" },
   },
 
   {
@@ -88,17 +91,31 @@ const defaultActions = [
   },
 
   {
-    text: "Users",
+    text: "Accounts",
     icon: "mdi-account-multiple",
-    to: { name: "user-table" },
+    to: { name: "account-table" },
   },
 ];
 
 export default {
+  components: { CustomGlobalNotificationSnackbar },
   data() {
     return {
       actions: defaultActions,
     };
+  },
+
+  computed: {
+    authenticatedCredentials() {
+      return this.$store.state.authentication.credentials;
+    },
+  },
+
+  methods: {
+    async logout() {
+      await this.$store.commit(PURGE_AUTHENTICATION);
+      await this.$router.push({ name: "login" });
+    },
   },
 };
 </script>
