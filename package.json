@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node build/server.js",
-    "execute:database-tables": "ts-node source/database/tables/index.ts",
-    "execute:database-seeds": "ts-node source/database/seeds/index.ts",
+    "execute-production:database-tables": "node build/database/tables/index.ts",
+    "execute-production:database-seeds": "node build/database/seeds/index.ts",
+    "execute-dev:database-tables": "ts-node source/database/tables/index.ts",
+    "execute-dev:database-seeds": "ts-node source/database/seeds/index.ts",
     "build:source": "tsc",
     "start:dev-server": "nodemon --exec ts-node source/server.ts",
     "build:web-client": "npm run build --prefix web-client",
