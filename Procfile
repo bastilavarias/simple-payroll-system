@@ -1,1 +1,1 @@
-  web: npm run execute:database-tables && npm run execute:database-seeds && npm start
+  web: npm run execute-production:database-tables && npm run execute-production:database-seeds && npm start
