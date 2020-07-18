@@ -69,6 +69,10 @@ export interface PayrollPayslipInformation {
     tax: number;
   };
   summary: {
+    administrator: {
+      name: string;
+    };
+    dateProcessed: Date;
     basicSalaryWithoutAbsent: number;
     totalSalary: number;
     totalDeduction: number;

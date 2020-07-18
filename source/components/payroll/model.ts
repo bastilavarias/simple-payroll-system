@@ -72,35 +72,39 @@ const PayrollModel = {
                                                 and e.is_deleted = false
                                               order by e.id asc
                                              ) employee
-                                    )                         employee,
+                                    )                                                      employee,
                                     (select row_to_json(period)
                                      from (
                                               select p.start_period_date "start", p.end_period_date "end"
-                                          ) period)           period,
+                                          ) period)                                        period,
                                     (select row_to_json(salaryDetails)
                                      from (
                                               select p.basic_salary "basicSalary", p.other_pay "otherPay"
-                                          ) salaryDetails)    "salaryDetails",
+                                          ) salaryDetails)                                 "salaryDetails",
                                     (select row_to_json(customDeduction)
                                      from (
                                               select p.sss_loan_deduction      "sssLoan",
                                                      p.pag_ibig_loan_deduction "pagIbigLoan",
                                                      p.other_loan_deduction    "otherLoan",
                                                      p.absent_deduction        "absent"
-                                          ) customDeduction)  "customDeduction",
+                                          ) customDeduction)                               "customDeduction",
                                     (select row_to_json(defaultDeduction)
                                      from (
                                               select p.sss_deduction        sss,
                                                      p.pag_ibig_deduction   "pagIbig",
                                                      p.philhealth_deduction philhealth,
                                                      p.tax_deduction        tax
-                                          ) defaultDeduction) "defaultDeduction",
+                                          ) defaultDeduction)                              "defaultDeduction",
                                     (select row_to_json(summary)
-                                     from (select p.basic_salary_without_absent    "basicSalaryWithoutAbsent",
-                                                  p.total_salary    "totalSalary",
-                                                  p.total_deduction "totalDeduction",
-                                                  p.net_pay         "netPay"
-                                          ) summary)          summary
+                                     from (select p.basic_salary_without_absent "basicSalaryWithoutAbsent",
+                                                  p.total_salary                "totalSalary",
+                                                  p.total_deduction             "totalDeduction",
+                                                  p.net_pay                     "netPay"
+                                          ) summary)                                       summary,
+                                    (select row_to_json(administraitorDetails)
+                                     from (select name, p.created_at "processedDate"
+                                           from account
+                                           where id = p.account_id) administraitorDetails) "administraitorDetails"
                              from payroll p
                              where p.start_period_date = $1
                                and p.end_period_date = $2) reports;`;

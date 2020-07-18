@@ -105,11 +105,38 @@
               </payslip-information-label>
             </div>
           </div>
+          <p class="v-subheader font-weight-bold pl-0">Administrator Details</p>
+          <v-simple-table dense>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Administrator Name</td>
+                <td>
+                  {{ payslipInformation.administraitorDetails.name }}
+                </td>
+              </tr>
+              <tr>
+                <td>Processed Date</td>
+                <td>
+                  {{
+                    formatDate(
+                      payslipInformation.administraitorDetails.processedDate
+                    )
+                  }}
+                </td>
+              </tr>
+            </tbody>
+          </v-simple-table>
           <p class="v-subheader font-weight-bold pl-0">Salary Details</p>
           <v-simple-table dense>
             <thead>
               <tr>
-                <th>Name</th>
+                <th></th>
                 <th>Amount</th>
               </tr>
             </thead>
@@ -134,7 +161,7 @@
           <v-simple-table dense>
             <thead>
               <tr>
-                <th>Title</th>
+                <th></th>
                 <th>Amount</th>
               </tr>
             </thead>
@@ -199,7 +226,7 @@
           <v-simple-table dense>
             <thead>
               <tr>
-                <th>Name</th>
+                <th></th>
                 <th>Amount</th>
               </tr>
             </thead>
