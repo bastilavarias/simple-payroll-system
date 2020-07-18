@@ -1,0 +1,722 @@
+{
+	"info": {
+		"_postman_id": "e1b9e15b-8859-459f-b9da-29b83f7d88a6",
+		"name": "Sari Sari Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Save Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Sebastian Curtis T. Lavarias",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Admin",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Basti Lavarias/Desktop/sebastian-lavarias.png"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/account/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate Account Custom ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/account/custom-id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								"custom-id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/account/information/0/10",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								"information",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  Account Information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/account/information/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								"information",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Accounts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50Ijp7ImlkIjoxLCJjdXN0b21JRCI6ImFjY291bnQtMDAwMDAiLCJuYW1lIjoic2ViYXN0aWFuIGN1cnRpcyB0IGxhdmFyaWFzIiwidHlwZSI6IkFkbWluIiwiaXNEaXNhYmxlZCI6ZmFsc2UsImltYWdlIjp7ImlkIjoxLCJuYW1lIjoic2ViYXN0aWFuLWxhdmFyaWFzLnBuZyIsInVybCI6Imh0dHA6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZGVxbGx1bmI5L2ltYWdlL3VwbG9hZC92MTU5NDEyODE2OS9zYXJpLXNhcmktc3RvcmUvYWNjb3VudC1waG90b3MvdG1wLTItMTU5NDEyODE1Njc4MV9seGJnZHAucG5nIiwicHVibGljSUQiOiJzYXJpLXNhcmktc3RvcmUvYWNjb3VudC1waG90b3MvdG1wLTItMTU5NDEyODE1Njc4MV9seGJnZHAifX0sImFjdGlvbnMiOlt7InRleHQiOiJEYXNoYm9hcmQiLCJpY29uIjoibWRpLXZpZXctZGFzaGJvYXJkIiwidG8iOnsibmFtZSI6ImRhc2hib2FyZCJ9fSx7InRleHQiOiJDaGVja291dCBDb3VudGVyIiwiaWNvbiI6Im1kaS1jYWxjdWxhdG9yIiwidG8iOnsibmFtZSI6ImNoZWNrb3V0LWNvdW50ZXIifX0seyJ0ZXh0IjoiT3JkZXIgSGlzdG9yeSIsImljb24iOiJtZGktaGlzdG9yeSIsInRvIjp7Im5hbWUiOiJvcmRlci1oaXN0b3J5In19LHsidGV4dCI6IlByb2R1Y3RzIiwiaWNvbiI6Im1kaS1wYWNrYWdlIiwidG8iOnsibmFtZSI6InByb2R1Y3QtdGFibGUifX0seyJ0ZXh0IjoiQWNjb3VudHMiLCJpY29uIjoibWRpLWFjY291bnQtbXVsdGlwbGUiLCJ0byI6eyJuYW1lIjoiYWNjb3VudC10YWJsZSJ9fSx7InRleHQiOiJTYWxlcyBSZXBvcnQiLCJpY29uIjoibWRpLXBvbGwiLCJ0byI6eyJuYW1lIjoic2FsZXMtcmVwb3J0In19LHsidGV4dCI6IkxvZ3MiLCJpY29uIjoibWRpLW5vdGUtdGV4dCIsInRvIjp7Im5hbWUiOiJsb2dzIn19XSwiaWF0IjoxNTk0MjYwNjg1fQ.S2BV3um2rbT1S2hqikER9LsrB9CF8YGsEKDNFPl8i-0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/account/search/name/seb/0/10",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								"search",
+								"name",
+								"seb",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "iris gwen",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Admin",
+									"type": "text"
+								},
+								{
+									"key": "accountID",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "customID",
+									"value": "account-00001",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Basti Lavarias/Desktop/640x360.jpg"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/account/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disable Account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "iris gwen",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Admin",
+									"type": "text"
+								},
+								{
+									"key": "accountID",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "customID",
+									"value": "account-00001",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Basti Lavarias/Desktop/640x360.jpg"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/account/disable/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								"disable",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable Account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "iris gwen",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Admin",
+									"type": "text"
+								},
+								{
+									"key": "accountID",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "customID",
+									"value": "account-00001",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Basti Lavarias/Desktop/640x360.jpg"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/account/enable/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								"enable",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/account/information/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								"information",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "ACCOUNT-00000",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ACCOUNT-00000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/authentication/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"authentication",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Authenticated",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50Ijp7ImlkIjoxLCJjdXN0b21JRCI6IkFDQ09VTlQtMDAwMDAiLCJuYW1lIjoiU2ViYXN0aWFuIEN1cnRpcyBULiBMYXZhcmlhcyJ9LCJpYXQiOjE1OTQwMjk4NDN9.KNC6Bk2lpBT-jvYCrFOnxLAzPh0csuElwjo8vbwkntk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/authentication/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"authentication",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Save Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "category",
+									"type": "text"
+								},
+								{
+									"key": "supplierPrice",
+									"value": "99.99",
+									"type": "text"
+								},
+								{
+									"key": "suggestedRetailPrice",
+									"value": "99.99",
+									"type": "text"
+								},
+								{
+									"key": "stocks",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Basti Lavarias/Desktop/Other Files/640x360.jpg"
+								},
+								{
+									"key": "newStocks",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/product/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50Ijp7ImlkIjoxLCJjdXN0b21JRCI6ImFjY291bnQtMDAwMDAiLCJuYW1lIjoic2ViYXN0aWFuIGN1cnRpcyB0IGxhdmFyaWFzIiwidHlwZSI6IkFkbWluIiwiaXNEaXNhYmxlZCI6ZmFsc2UsImltYWdlIjp7ImlkIjoxLCJuYW1lIjoic2ViYXN0aWFuLWxhdmFyaWFzLnBuZyIsInVybCI6Imh0dHA6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZGVxbGx1bmI5L2ltYWdlL3VwbG9hZC92MTU5NDEyODE2OS9zYXJpLXNhcmktc3RvcmUvYWNjb3VudC1waG90b3MvdG1wLTItMTU5NDEyODE1Njc4MV9seGJnZHAucG5nIiwicHVibGljSUQiOiJzYXJpLXNhcmktc3RvcmUvYWNjb3VudC1waG90b3MvdG1wLTItMTU5NDEyODE1Njc4MV9seGJnZHAifX0sImFjdGlvbnMiOlt7InRleHQiOiJEYXNoYm9hcmQiLCJpY29uIjoibWRpLXZpZXctZGFzaGJvYXJkIiwidG8iOnsibmFtZSI6ImRhc2hib2FyZCJ9fSx7InRleHQiOiJDaGVja291dCBDb3VudGVyIiwiaWNvbiI6Im1kaS1jYWxjdWxhdG9yIiwidG8iOnsibmFtZSI6ImNoZWNrb3V0LWNvdW50ZXIifX0seyJ0ZXh0IjoiT3JkZXIgSGlzdG9yeSIsImljb24iOiJtZGktaGlzdG9yeSIsInRvIjp7Im5hbWUiOiJvcmRlci1oaXN0b3J5In19LHsidGV4dCI6IlByb2R1Y3RzIiwiaWNvbiI6Im1kaS1wYWNrYWdlIiwidG8iOnsibmFtZSI6InByb2R1Y3QtdGFibGUifX0seyJ0ZXh0IjoiQWNjb3VudHMiLCJpY29uIjoibWRpLWFjY291bnQtbXVsdGlwbGUiLCJ0byI6eyJuYW1lIjoiYWNjb3VudC10YWJsZSJ9fSx7InRleHQiOiJTYWxlcyBSZXBvcnQiLCJpY29uIjoibWRpLXBvbGwiLCJ0byI6eyJuYW1lIjoic2FsZXMtcmVwb3J0In19LHsidGV4dCI6IkxvZ3MiLCJpY29uIjoibWRpLW5vdGUtdGV4dCIsInRvIjp7Im5hbWUiOiJsb2dzIn19XSwiaWF0IjoxNTk0MjAwNDYxfQ.BuWtjAhquYVbT2pcGk94qCWHETDLuseZlmYx7_D6bjs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/product/information/0/10",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"information",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50Ijp7ImlkIjoxLCJjdXN0b21JRCI6ImFjY291bnQtMDAwMDAiLCJuYW1lIjoic2ViYXN0aWFuIGN1cnRpcyB0IGxhdmFyaWFzIiwidHlwZSI6IkFkbWluIiwiaXNEaXNhYmxlZCI6ZmFsc2UsImltYWdlIjp7ImlkIjoxLCJuYW1lIjoic2ViYXN0aWFuLWxhdmFyaWFzLnBuZyIsInVybCI6Imh0dHA6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZGVxbGx1bmI5L2ltYWdlL3VwbG9hZC92MTU5NDEyODE2OS9zYXJpLXNhcmktc3RvcmUvYWNjb3VudC1waG90b3MvdG1wLTItMTU5NDEyODE1Njc4MV9seGJnZHAucG5nIiwicHVibGljSUQiOiJzYXJpLXNhcmktc3RvcmUvYWNjb3VudC1waG90b3MvdG1wLTItMTU5NDEyODE1Njc4MV9seGJnZHAifX0sImFjdGlvbnMiOlt7InRleHQiOiJEYXNoYm9hcmQiLCJpY29uIjoibWRpLXZpZXctZGFzaGJvYXJkIiwidG8iOnsibmFtZSI6ImRhc2hib2FyZCJ9fSx7InRleHQiOiJDaGVja291dCBDb3VudGVyIiwiaWNvbiI6Im1kaS1jYWxjdWxhdG9yIiwidG8iOnsibmFtZSI6ImNoZWNrb3V0LWNvdW50ZXIifX0seyJ0ZXh0IjoiT3JkZXIgSGlzdG9yeSIsImljb24iOiJtZGktaGlzdG9yeSIsInRvIjp7Im5hbWUiOiJvcmRlci1oaXN0b3J5In19LHsidGV4dCI6IlByb2R1Y3RzIiwiaWNvbiI6Im1kaS1wYWNrYWdlIiwidG8iOnsibmFtZSI6InByb2R1Y3QtdGFibGUifX0seyJ0ZXh0IjoiQWNjb3VudHMiLCJpY29uIjoibWRpLWFjY291bnQtbXVsdGlwbGUiLCJ0byI6eyJuYW1lIjoiYWNjb3VudC10YWJsZSJ9fSx7InRleHQiOiJTYWxlcyBSZXBvcnQiLCJpY29uIjoibWRpLXBvbGwiLCJ0byI6eyJuYW1lIjoic2FsZXMtcmVwb3J0In19LHsidGV4dCI6IkxvZ3MiLCJpY29uIjoibWRpLW5vdGUtdGV4dCIsInRvIjp7Im5hbWUiOiJsb2dzIn19XSwiaWF0IjoxNTk0MjYwNjg1fQ.S2BV3um2rbT1S2hqikER9LsrB9CF8YGsEKDNFPl8i-0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/product/search/name/23/0/10",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"search",
+								"name",
+								"23",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50Ijp7ImlkIjoxLCJjdXN0b21JRCI6ImFjY291bnQtMDAwMDAiLCJuYW1lIjoic2ViYXN0aWFuIGN1cnRpcyB0IGxhdmFyaWFzIiwidHlwZSI6IkFkbWluIiwiaXNEaXNhYmxlZCI6ZmFsc2UsImltYWdlIjp7ImlkIjoxLCJuYW1lIjoic2ViYXN0aWFuLWxhdmFyaWFzLnBuZyIsInVybCI6Imh0dHA6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZGVxbGx1bmI5L2ltYWdlL3VwbG9hZC92MTU5NDEyODE2OS9zYXJpLXNhcmktc3RvcmUvYWNjb3VudC1waG90b3MvdG1wLTItMTU5NDEyODE1Njc4MV9seGJnZHAucG5nIiwicHVibGljSUQiOiJzYXJpLXNhcmktc3RvcmUvYWNjb3VudC1waG90b3MvdG1wLTItMTU5NDEyODE1Njc4MV9seGJnZHAifX0sImFjdGlvbnMiOlt7InRleHQiOiJEYXNoYm9hcmQiLCJpY29uIjoibWRpLXZpZXctZGFzaGJvYXJkIiwidG8iOnsibmFtZSI6ImRhc2hib2FyZCJ9fSx7InRleHQiOiJDaGVja291dCBDb3VudGVyIiwiaWNvbiI6Im1kaS1jYWxjdWxhdG9yIiwidG8iOnsibmFtZSI6ImNoZWNrb3V0LWNvdW50ZXIifX0seyJ0ZXh0IjoiT3JkZXIgSGlzdG9yeSIsImljb24iOiJtZGktaGlzdG9yeSIsInRvIjp7Im5hbWUiOiJvcmRlci1oaXN0b3J5In19LHsidGV4dCI6IlByb2R1Y3RzIiwiaWNvbiI6Im1kaS1wYWNrYWdlIiwidG8iOnsibmFtZSI6InByb2R1Y3QtdGFibGUifX0seyJ0ZXh0IjoiQWNjb3VudHMiLCJpY29uIjoibWRpLWFjY291bnQtbXVsdGlwbGUiLCJ0byI6eyJuYW1lIjoiYWNjb3VudC10YWJsZSJ9fSx7InRleHQiOiJTYWxlcyBSZXBvcnQiLCJpY29uIjoibWRpLXBvbGwiLCJ0byI6eyJuYW1lIjoic2FsZXMtcmVwb3J0In19LHsidGV4dCI6IkxvZ3MiLCJpY29uIjoibWRpLW5vdGUtdGV4dCIsInRvIjp7Im5hbWUiOiJsb2dzIn19XSwiaWF0IjoxNTk0MjYwNjg1fQ.S2BV3um2rbT1S2hqikER9LsrB9CF8YGsEKDNFPl8i-0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/product/information/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"information",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50Ijp7ImlkIjoxLCJjdXN0b21JRCI6ImFjY291bnQtMDAwMDAiLCJuYW1lIjoiZGVmYXVsdCBhZG1pbiIsInR5cGUiOiJBZG1pbiIsImlzRGlzYWJsZWQiOmZhbHNlLCJpbWFnZSI6eyJpZCI6MSwibmFtZSI6ImFkbWluLnBuZyIsInVybCI6Imh0dHBzOi8vcmVzLmNsb3VkaW5hcnkuY29tL2RlcWxsdW5iOS9pbWFnZS91cGxvYWQvdjE1OTQxMjU4MDIvc2FyaS1zYXJpLXN0b3JlL3NlZWQtcGhvdG8vYWRtaW4tc2V0dGluZ3MtbWFsZV9wbG45d2oucG5nIiwicHVibGljSUQiOiJzYXJpLXNhcmktc3RvcmUvc2VlZC1waG90by9hZG1pbi1zZXR0aW5ncy1tYWxlX3Bsbjl3ai5wbmcifX0sImFjdGlvbnMiOlt7InRleHQiOiJEYXNoYm9hcmQiLCJpY29uIjoibWRpLXZpZXctZGFzaGJvYXJkIiwidG8iOnsibmFtZSI6ImRhc2hib2FyZCJ9fSx7InRleHQiOiJDaGVja291dCBDb3VudGVyIiwiaWNvbiI6Im1kaS1jYWxjdWxhdG9yIiwidG8iOnsibmFtZSI6ImNoZWNrb3V0LWNvdW50ZXIifX0seyJ0ZXh0IjoiT3JkZXIgSGlzdG9yeSIsImljb24iOiJtZGktaGlzdG9yeSIsInRvIjp7Im5hbWUiOiJvcmRlci1oaXN0b3J5In19LHsidGV4dCI6IlByb2R1Y3RzIiwiaWNvbiI6Im1kaS1wYWNrYWdlIiwidG8iOnsibmFtZSI6InByb2R1Y3QtdGFibGUifX0seyJ0ZXh0IjoiQWNjb3VudHMiLCJpY29uIjoibWRpLWFjY291bnQtbXVsdGlwbGUiLCJ0byI6eyJuYW1lIjoiYWNjb3VudC10YWJsZSJ9fSx7InRleHQiOiJTYWxlcyBSZXBvcnQiLCJpY29uIjoibWRpLXBvbGwiLCJ0byI6eyJuYW1lIjoic2FsZXMtcmVwb3J0In19LHsidGV4dCI6IkxvZ3MiLCJpY29uIjoibWRpLW5vdGUtdGV4dCIsInRvIjp7Im5hbWUiOiJsb2dzIn19XSwiaWF0IjoxNTk0MjkzMjU3fQ.QbERopBoXMuSKNLUXB5wQl4T7mXMlvN91LMqUdJt2Zc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "snacks",
+									"type": "text"
+								},
+								{
+									"key": "supplierPrice",
+									"value": "99.99",
+									"type": "text"
+								},
+								{
+									"key": "suggestedRetailPrice",
+									"value": "99.99",
+									"type": "text"
+								},
+								{
+									"key": "stocks",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Basti Lavarias/Desktop/Other Files/640x360.jpg"
+								},
+								{
+									"key": "newStocks",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "productID",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/product/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disable Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50Ijp7ImlkIjoxLCJjdXN0b21JRCI6ImFjY291bnQtMDAwMDAiLCJuYW1lIjoiZGVmYXVsdCBhZG1pbiIsInR5cGUiOiJBZG1pbiIsImlzRGlzYWJsZWQiOmZhbHNlLCJpbWFnZSI6eyJpZCI6MSwibmFtZSI6ImFkbWluLnBuZyIsInVybCI6Imh0dHBzOi8vcmVzLmNsb3VkaW5hcnkuY29tL2RlcWxsdW5iOS9pbWFnZS91cGxvYWQvdjE1OTQxMjU4MDIvc2FyaS1zYXJpLXN0b3JlL3NlZWQtcGhvdG8vYWRtaW4tc2V0dGluZ3MtbWFsZV9wbG45d2oucG5nIiwicHVibGljSUQiOiJzYXJpLXNhcmktc3RvcmUvc2VlZC1waG90by9hZG1pbi1zZXR0aW5ncy1tYWxlX3Bsbjl3ai5wbmcifX0sImFjdGlvbnMiOlt7InRleHQiOiJEYXNoYm9hcmQiLCJpY29uIjoibWRpLXZpZXctZGFzaGJvYXJkIiwidG8iOnsibmFtZSI6ImRhc2hib2FyZCJ9fSx7InRleHQiOiJDaGVja291dCBDb3VudGVyIiwiaWNvbiI6Im1kaS1jYWxjdWxhdG9yIiwidG8iOnsibmFtZSI6ImNoZWNrb3V0LWNvdW50ZXIifX0seyJ0ZXh0IjoiT3JkZXIgSGlzdG9yeSIsImljb24iOiJtZGktaGlzdG9yeSIsInRvIjp7Im5hbWUiOiJvcmRlci1oaXN0b3J5In19LHsidGV4dCI6IlByb2R1Y3RzIiwiaWNvbiI6Im1kaS1wYWNrYWdlIiwidG8iOnsibmFtZSI6InByb2R1Y3QtdGFibGUifX0seyJ0ZXh0IjoiQWNjb3VudHMiLCJpY29uIjoibWRpLWFjY291bnQtbXVsdGlwbGUiLCJ0byI6eyJuYW1lIjoiYWNjb3VudC10YWJsZSJ9fSx7InRleHQiOiJTYWxlcyBSZXBvcnQiLCJpY29uIjoibWRpLXBvbGwiLCJ0byI6eyJuYW1lIjoic2FsZXMtcmVwb3J0In19LHsidGV4dCI6IkxvZ3MiLCJpY29uIjoibWRpLW5vdGUtdGV4dCIsInRvIjp7Im5hbWUiOiJsb2dzIn19XSwiaWF0IjoxNTk0Mjk4MjkwfQ.LwoHcgaEm-l5UWE3tQEcBxff180Gqs9Dl9bMHBx3xZg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/product/disable/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"disable",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50Ijp7ImlkIjoxLCJjdXN0b21JRCI6ImFjY291bnQtMDAwMDAiLCJuYW1lIjoiZGVmYXVsdCBhZG1pbiIsInR5cGUiOiJBZG1pbiIsImlzRGlzYWJsZWQiOmZhbHNlLCJpbWFnZSI6eyJpZCI6MSwibmFtZSI6ImFkbWluLnBuZyIsInVybCI6Imh0dHBzOi8vcmVzLmNsb3VkaW5hcnkuY29tL2RlcWxsdW5iOS9pbWFnZS91cGxvYWQvdjE1OTQxMjU4MDIvc2FyaS1zYXJpLXN0b3JlL3NlZWQtcGhvdG8vYWRtaW4tc2V0dGluZ3MtbWFsZV9wbG45d2oucG5nIiwicHVibGljSUQiOiJzYXJpLXNhcmktc3RvcmUvc2VlZC1waG90by9hZG1pbi1zZXR0aW5ncy1tYWxlX3Bsbjl3ai5wbmcifX0sImFjdGlvbnMiOlt7InRleHQiOiJEYXNoYm9hcmQiLCJpY29uIjoibWRpLXZpZXctZGFzaGJvYXJkIiwidG8iOnsibmFtZSI6ImRhc2hib2FyZCJ9fSx7InRleHQiOiJDaGVja291dCBDb3VudGVyIiwiaWNvbiI6Im1kaS1jYWxjdWxhdG9yIiwidG8iOnsibmFtZSI6ImNoZWNrb3V0LWNvdW50ZXIifX0seyJ0ZXh0IjoiT3JkZXIgSGlzdG9yeSIsImljb24iOiJtZGktaGlzdG9yeSIsInRvIjp7Im5hbWUiOiJvcmRlci1oaXN0b3J5In19LHsidGV4dCI6IlByb2R1Y3RzIiwiaWNvbiI6Im1kaS1wYWNrYWdlIiwidG8iOnsibmFtZSI6InByb2R1Y3QtdGFibGUifX0seyJ0ZXh0IjoiQWNjb3VudHMiLCJpY29uIjoibWRpLWFjY291bnQtbXVsdGlwbGUiLCJ0byI6eyJuYW1lIjoiYWNjb3VudC10YWJsZSJ9fSx7InRleHQiOiJTYWxlcyBSZXBvcnQiLCJpY29uIjoibWRpLXBvbGwiLCJ0byI6eyJuYW1lIjoic2FsZXMtcmVwb3J0In19LHsidGV4dCI6IkxvZ3MiLCJpY29uIjoibWRpLW5vdGUtdGV4dCIsInRvIjp7Im5hbWUiOiJsb2dzIn19XSwiaWF0IjoxNTk0Mjk4MjkwfQ.LwoHcgaEm-l5UWE3tQEcBxff180Gqs9Dl9bMHBx3xZg"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/product/enable/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"enable",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50Ijp7ImlkIjoxLCJjdXN0b21JRCI6ImFjY291bnQtMDAwMDAiLCJuYW1lIjoiZGVmYXVsdCBhZG1pbiIsInR5cGUiOiJBZG1pbiIsImlzRGlzYWJsZWQiOmZhbHNlLCJpbWFnZSI6eyJpZCI6MSwibmFtZSI6ImFkbWluLnBuZyIsInVybCI6Imh0dHBzOi8vcmVzLmNsb3VkaW5hcnkuY29tL2RlcWxsdW5iOS9pbWFnZS91cGxvYWQvdjE1OTQxMjU4MDIvc2FyaS1zYXJpLXN0b3JlL3NlZWQtcGhvdG8vYWRtaW4tc2V0dGluZ3MtbWFsZV9wbG45d2oucG5nIiwicHVibGljSUQiOiJzYXJpLXNhcmktc3RvcmUvc2VlZC1waG90by9hZG1pbi1zZXR0aW5ncy1tYWxlX3Bsbjl3ai5wbmcifX0sImFjdGlvbnMiOlt7InRleHQiOiJEYXNoYm9hcmQiLCJpY29uIjoibWRpLXZpZXctZGFzaGJvYXJkIiwidG8iOnsibmFtZSI6ImRhc2hib2FyZCJ9fSx7InRleHQiOiJDaGVja291dCBDb3VudGVyIiwiaWNvbiI6Im1kaS1jYWxjdWxhdG9yIiwidG8iOnsibmFtZSI6ImNoZWNrb3V0LWNvdW50ZXIifX0seyJ0ZXh0IjoiT3JkZXIgSGlzdG9yeSIsImljb24iOiJtZGktaGlzdG9yeSIsInRvIjp7Im5hbWUiOiJvcmRlci1oaXN0b3J5In19LHsidGV4dCI6IlByb2R1Y3RzIiwiaWNvbiI6Im1kaS1wYWNrYWdlIiwidG8iOnsibmFtZSI6InByb2R1Y3QtdGFibGUifX0seyJ0ZXh0IjoiQWNjb3VudHMiLCJpY29uIjoibWRpLWFjY291bnQtbXVsdGlwbGUiLCJ0byI6eyJuYW1lIjoiYWNjb3VudC10YWJsZSJ9fSx7InRleHQiOiJTYWxlcyBSZXBvcnQiLCJpY29uIjoibWRpLXBvbGwiLCJ0byI6eyJuYW1lIjoic2FsZXMtcmVwb3J0In19LHsidGV4dCI6IkxvZ3MiLCJpY29uIjoibWRpLW5vdGUtdGV4dCIsInRvIjp7Im5hbWUiOiJsb2dzIn19XSwiaWF0IjoxNTk0Mjk4MjkwfQ.LwoHcgaEm-l5UWE3tQEcBxff180Gqs9Dl9bMHBx3xZg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/product/information/23",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"information",
+								"23"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

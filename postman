@@ -1,0 +1,595 @@
+{
+	"info": {
+		"_postman_id": "a6e6c06c-89fd-4866-aaa8-cd63db388314",
+		"name": "Simple Payroll System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "Save Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "name 2",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "username 2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/account/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/account/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/account/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "updated name ",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "updated username ",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "updated password",
+									"type": "text"
+								},
+								{
+									"key": "accountID",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/account",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/account/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"account",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "department",
+			"item": [
+				{
+					"name": "Save Department",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "username",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/department/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"department",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Departments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/department/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"department",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/department/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"department",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "updated name ",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "updated description",
+									"type": "text"
+								},
+								{
+									"key": "departmentID",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/department",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"department"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/department/5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"department",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "designation",
+			"item": [
+				{
+					"name": "Save Designation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "username",
+									"type": "text"
+								},
+								{
+									"key": "dailySalary",
+									"value": "650.00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/designation/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"designation",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Designations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/designation/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"designation",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Designation Information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/designation/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"designation",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Designation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "updated name ",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "updated description",
+									"type": "text"
+								},
+								{
+									"key": "designationID",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "dailySalary",
+									"value": "450",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/designation",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"designation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Designation",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/designation/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"designation",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "employee",
+			"item": [
+				{
+					"name": "Generate Employee ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/employee/custom/employee-id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"employee",
+								"custom",
+								"employee-id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"departmentID\": 1,\r\n   \"designationID\": 1,\r\n   \"profile\": {\r\n     \"firstName\": \"sebastian curtis\",\r\n     \"middleName\": \"tabucao\",\r\n     \"lastName\": \"lavarias\",\r\n     \"extensionName\": \"extensionName\",\r\n     \"birthDate\": \"2000-05-21\",\r\n     \"birthPlace\": \"Manila\",\r\n     \"sex\": \"Male\",\r\n     \"citizenship\": \"Filipino\",\r\n     \"civilStatus\": \"Single\",\r\n     \"address\": \"406 Sta Fe St. Tondo Manila\",\r\n     \"contactNumber\": \"090909090909\",\r\n     \"height\": \"1.78\",\r\n     \"weight\": \"36\",\r\n     \"bloodType\": \"0+\"\r\n   },\r\n   \"benefit\": {\r\n       \"gsisNumber\": \"gsisNumber\",\r\n       \"pagIbigIDNumber\": \"pagIbigIDNumber\",\r\n       \"philhealthNumber\": \"philhealthNumber\",\r\n       \"sssNumber\": \"sssNumber\",\r\n       \"tinNumber\": \"tinNumber\",\r\n       \"agencyEmployeeNumber\": \"agencyEmployeeNumber\"\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/employee/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"employee",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/employee/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"employee",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employee Information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/employee/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"employee",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"employeeID\": 1,\r\n   \"employeeProfileID\": 1,\r\n   \"employeeBenefitID\": 1,\r\n   \"departmentID\": 5,\r\n   \"designationID\": 2,\r\n   \"profile\": {\r\n     \"firstName\": \"updated sebastian curtis\",\r\n     \"middleName\": \"updated tabucao\",\r\n     \"lastName\": \"updatedlavarias\",\r\n     \"extensionName\": \"updatedextensionName\",\r\n     \"birthDate\": \"2000-05-19\",\r\n     \"birthPlace\": \"Marikina\",\r\n     \"sex\": \"Female\",\r\n     \"citizenship\": \"American\",\r\n     \"civilStatus\": \"Widowed\",\r\n     \"address\": \"406 Sta Fe St. Ba. Magsaysay Tondo Manila\",\r\n     \"contactNumber\": \"08080808\",\r\n     \"height\": \"2.0\",\r\n     \"weight\": \"40\",\r\n     \"bloodType\": \"0-\"\r\n   },\r\n   \"benefit\": {\r\n       \"gsisNumber\": \"updated gsisNumber\",\r\n       \"pagIbigIDNumber\": \"updated pagIbigIDNumber\",\r\n       \"philhealthNumber\": \"updated philhealthNumber\",\r\n       \"sssNumber\": \"updated sssNumber\",\r\n       \"tinNumber\": \"updated tinNumber\",\r\n       \"agencyEmployeeNumber\": \"updated agencyEmployeeNumber\"\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/employee/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"employee",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/employee/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"employee",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
