@@ -18,7 +18,7 @@ const EmployeeService = {
     generateCustomID: () => __awaiter(void 0, void 0, void 0, function* () {
         const error = {};
         const gotAccountTableRowsCount = yield model_1.default.countTableRows(`employee`);
-        const formattedCustomID = EmployeeService.formatCustomID(gotAccountTableRowsCount);
+        const formattedCustomID = EmployeeService.formatCustomID(gotAccountTableRowsCount + 1);
         const generatedCustomID = formattedCustomID
             ? formattedCustomID
             : "ACCOUNT-00000";
