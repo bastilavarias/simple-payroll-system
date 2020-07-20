@@ -25,7 +25,7 @@
         <template v-slot:item.customID="{ item }">
           <span class="font-weight-bold">{{ item.customID }}</span>
         </template>
-        <template v-slot:item.name="{ item }">
+        <template v-slot:item.profile.lastName="{ item }">
           <span class="text-capitalize">{{
             formatFullName(item.profile)
           }}</span>
@@ -75,7 +75,7 @@ const defaultTableHeaders = [
 
   {
     text: "Name",
-    value: "name",
+    value: "profile.lastName",
   },
 
   {

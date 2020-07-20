@@ -9,7 +9,7 @@ const EmployeeService = {
       `employee`
     );
     const formattedCustomID = EmployeeService.formatCustomID(
-      gotAccountTableRowsCount
+      gotAccountTableRowsCount + 1
     );
     const generatedCustomID = formattedCustomID
       ? formattedCustomID
