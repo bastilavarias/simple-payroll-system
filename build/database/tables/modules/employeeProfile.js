@@ -5,7 +5,7 @@ const query = `create table if not exists employee_profile (
     first_name varchar(250) not null,
     middle_name varchar(250),
     last_name varchar(250) not null,
-    extension_name varchar(50) not null,
+    extension_name varchar(50),
     birth_date date not null,
     birth_place varchar(150) not null,
     sex varchar(10) not null,   
