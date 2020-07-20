@@ -14,8 +14,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = __importDefault(require("../index"));
 const account_1 = __importDefault(require("./modules/account"));
+const department_1 = __importDefault(require("./modules/department"));
+const designation_1 = __importDefault(require("./modules/designation"));
+const employeeProfile_1 = __importDefault(require("./modules/employeeProfile"));
+const employeeBenefit_1 = __importDefault(require("./modules/employeeBenefit"));
+const employee_1 = __importDefault(require("./modules/employee"));
 const executeSeeds = () => __awaiter(void 0, void 0, void 0, function* () {
     yield index_1.default.execute(account_1.default);
+    yield index_1.default.execute(department_1.default);
+    yield index_1.default.execute(designation_1.default);
+    yield index_1.default.execute(employeeProfile_1.default);
+    yield index_1.default.execute(employeeBenefit_1.default);
+    yield index_1.default.execute(employee_1.default);
 });
 executeSeeds().then(() => console.log("Database seeds created."));
 //# sourceMappingURL=index.js.map
