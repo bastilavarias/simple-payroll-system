@@ -11,10 +11,10 @@ const Utilities = {
       return text ? text[0] : "";
     },
 
-    formatFullName({ firstName, middleName, lastName, extension }) {
+    formatFullName({ firstName, middleName, lastName, extensionName }) {
       return `${firstName} ${
         middleName ? `${this.getTextFirstLetter(middleName)}.` : ""
-      } ${lastName} ${extension ? `${extension.toUpperCase()}` : ""} `;
+      } ${lastName} ${extensionName ? `${extensionName.toUpperCase()}` : ""} `;
     },
 
     formatMoney(money) {
