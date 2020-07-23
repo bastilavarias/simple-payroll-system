@@ -11,7 +11,6 @@ const DesignationController = {
           ? parseFloat(request.body.dailySalary)
           : 0.0,
       };
-      console.log(designationForm);
       const result = await DesignationService.save(designationForm);
       if (Object.keys(result.error).length > 0) throw result.error;
       delete result.error;

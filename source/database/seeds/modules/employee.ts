@@ -1,5 +1,4 @@
 const query = `
-
     insert into employee (id, custom_id, department_id, designation_id, employee_profile_id, employee_benefit_id)
     values (1, 'ACCOUNT-00001', 5, 1, 1, 1);
     insert into employee (id, custom_id, department_id, designation_id, employee_profile_id, employee_benefit_id)
