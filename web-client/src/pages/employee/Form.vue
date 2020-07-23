@@ -27,6 +27,7 @@
                 outlined
                 :items="departments"
                 item-value="id"
+                item-text="name"
                 v-model="form.departmentID"
                 :loading="isFetchDepartmentsStart"
               >
