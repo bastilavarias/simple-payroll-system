@@ -46,9 +46,7 @@ const AuthenticationService = {
 
   getAuthenticatedCredentials: async (token: Token) => {
     const { account } = token;
-    const gotAccountInformation = await AccountModel.getInformationByUsername(
-      account.username
-    );
+    const gotAccountInformation = await AccountModel.getInformation(account.id);
     delete gotAccountInformation.password;
     const signedJWT = jwt.sign(
       JSON.parse(JSON.stringify({ account: gotAccountInformation })),
