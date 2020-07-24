@@ -23,7 +23,6 @@ const DesignationController = {
                     ? parseFloat(request.body.dailySalary)
                     : 0.0,
             };
-            console.log(designationForm);
             const result = yield service_1.default.save(designationForm);
             if (Object.keys(result.error).length > 0)
                 throw result.error;

@@ -67,7 +67,7 @@ const AuthenticationService = {
     }),
     getAuthenticatedCredentials: (token) => __awaiter(void 0, void 0, void 0, function* () {
         const { account } = token;
-        const gotAccountInformation = yield model_1.default.getInformationByUsername(account.username);
+        const gotAccountInformation = yield model_1.default.getInformation(account.id);
         delete gotAccountInformation.password;
         const signedJWT = jsonwebtoken_1.default.sign(JSON.parse(JSON.stringify({ account: gotAccountInformation })), process.env.AUTH_SECRET_OR_KEY);
         const bearerToken = `Bearer ${signedJWT}`;
