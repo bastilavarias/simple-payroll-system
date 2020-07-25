@@ -9,6 +9,7 @@ const AccountController = {
         name: request.body.name ? request.body.name : "",
         username: request.body.username ? request.body.username : "",
         password: request.body.password ? request.body.password : "",
+        type: request.body.type ? request.body.type : "Staff",
       };
       const result = await AccountService.save(accountForm);
       if (UtilityService.checkErrorIfValid(result.error)) throw result.error;
@@ -56,6 +57,7 @@ const AccountController = {
         name: request.body.name ? request.body.name : "",
         username: request.body.username ? request.body.username : "",
         password: request.body.password ? request.body.password : "",
+        type: request.body.type ? request.body.type : "",
       };
       const result = await AccountService.update(accountID, accountForm);
       if (Object.keys(result.error).length > 0) throw result.error;

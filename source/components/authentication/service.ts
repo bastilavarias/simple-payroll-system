@@ -33,8 +33,16 @@ const AuthenticationService = {
       };
     }
     delete gotAccountInformation.password;
+    const gotAccountActions = AuthenticationService.getAccountActions(
+      gotAccountInformation.type
+    );
     const signedJWT = jwt.sign(
-      JSON.parse(JSON.stringify({ account: gotAccountInformation })),
+      JSON.parse(
+        JSON.stringify({
+          account: gotAccountInformation,
+          actions: gotAccountActions,
+        })
+      ),
       <string>process.env.AUTH_SECRET_OR_KEY
     );
     bearerToken = `Bearer ${signedJWT}`;
@@ -48,14 +56,79 @@ const AuthenticationService = {
     const { account } = token;
     const gotAccountInformation = await AccountModel.getInformation(account.id);
     delete gotAccountInformation.password;
+    const gotAccountActions = AuthenticationService.getAccountActions(
+      gotAccountInformation.type
+    );
     const signedJWT = jwt.sign(
-      JSON.parse(JSON.stringify({ account: gotAccountInformation })),
+      JSON.parse(
+        JSON.stringify({
+          account: gotAccountInformation,
+          actions: gotAccountActions,
+        })
+      ),
       <string>process.env.AUTH_SECRET_OR_KEY
     );
     const bearerToken = `Bearer ${signedJWT}`;
     return {
       token: bearerToken,
     };
+  },
+
+  getAccountActions: (accountType: string) => {
+    let actions = [];
+    const staffActions = [
+      {
+        text: "Payroll",
+        icon: "mdi-database",
+        to: { name: "payroll" },
+      },
+
+      {
+        text: "Report",
+        icon: "mdi-file-chart",
+        to: { name: "report" },
+      },
+    ];
+    switch (accountType) {
+      case "Staff":
+        actions = staffActions;
+        break;
+
+      case "Administrator":
+        actions = [
+          {
+            text: "Employees",
+            icon: "mdi-account-tie",
+            to: { name: "employee-table" },
+          },
+
+          {
+            text: "Departments",
+            icon: "mdi-dock-window",
+            to: { name: "department-table" },
+          },
+
+          {
+            text: "Designations",
+            icon: "mdi-briefcase-account",
+            to: { name: "designation-table" },
+          },
+
+          {
+            text: "Accounts",
+            icon: "mdi-account-multiple",
+            to: { name: "account-table" },
+          },
+
+          ...staffActions,
+        ];
+        break;
+
+      default:
+        actions = staffActions;
+        break;
+    }
+    return actions;
   },
 };
 

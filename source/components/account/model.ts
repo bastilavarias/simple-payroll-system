@@ -20,7 +20,7 @@ const AccountModel = {
   },
 
   getInformation: async (accountID: number): Promise<AccountInformation> => {
-    const query = `select a.id, a.name, a.username, a.password
+    const query = `select a.id, a.name, a.username, a.password, a.type
                        from account a
                        where a.is_deleted = false
                          and a.id = $1;`;
@@ -32,7 +32,7 @@ const AccountModel = {
   getInformationByUsername: async (
     username: string
   ): Promise<AccountInformation> => {
-    const query = `select a.id, a.name, a.username, a.password
+    const query = `select a.id, a.name, a.username, a.password, a.type
                        from account a
                        where a.is_deleted = false
                          and a.username = $1;`;

@@ -23,13 +23,13 @@
             <v-list-item-title class="text-capitalize font-weight-bold">
               {{ authenticatedCredentials.account.name }}
             </v-list-item-title>
-            <v-list-item-subtitle class="text-capitalize"
-              >Administrator</v-list-item-subtitle
-            >
+            <v-list-item-subtitle class="text-capitalize">{{
+              authenticatedCredentials.account.type
+            }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-divider></v-divider>
-        <template v-for="(action, index) in actions">
+        <template v-for="(action, index) in authenticatedCredentials.actions">
           <v-list-item
             active-class="primary white--text"
             :key="index"
@@ -99,11 +99,6 @@ const defaultActions = [
 
 export default {
   components: { CustomGlobalNotificationSnackbar },
-  data() {
-    return {
-      actions: defaultActions,
-    };
-  },
 
   computed: {
     authenticatedCredentials() {
