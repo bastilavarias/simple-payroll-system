@@ -25,6 +25,14 @@
             label="Password"
           ></custom-password-field
         ></v-col>
+        <v-col cols="12">
+          <v-select
+            :items="accountTypes"
+            label="Type"
+            v-model="form.type"
+            outlined
+          ></v-select>
+        </v-col>
         <v-col cols="12" v-if="isViewMode">
           <custom-password-field
             :password.sync="form.newPassword"
@@ -75,7 +83,10 @@ const defaultForm = {
   username: "",
   password: "",
   newPassword: "",
+  type: null,
 };
+
+const accountTypes = ["Administrator", "Staff"];
 
 export default {
   components: { CustomPasswordField },
@@ -85,6 +96,7 @@ export default {
       defaultForm,
       isSaveAccountStart: false,
       isUpdateAccountStart: false,
+      accountTypes,
     };
   },
 
