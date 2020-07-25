@@ -15,14 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../../database"));
 const AccountModel = {
     save: (accountForm, hashedPassword) => __awaiter(void 0, void 0, void 0, function* () {
-        const query = `insert into account (name, username, password)
-                       values ($1, $2, $3);`;
-        const { name, username } = accountForm;
-        const parameters = [name, username, hashedPassword];
+        const query = `insert into account (name, username, password, type)
+                       values ($1, $2, $3, $4);`;
+        const { name, username, type } = accountForm;
+        const parameters = [name, username, hashedPassword, type];
         yield database_1.default.execute(query, parameters);
     }),
     fetch: () => __awaiter(void 0, void 0, void 0, function* () {
-        const query = `select a.id, a.name, a.username
+        const query = `select a.id, a.name, a.username, a.type
                        from account a
                        where a.is_deleted = false
                        order by id asc;`;
@@ -30,7 +30,7 @@ const AccountModel = {
         return rows.length > 0 ? rows : [];
     }),
     getInformation: (accountID) => __awaiter(void 0, void 0, void 0, function* () {
-        const query = `select a.id, a.name, a.username, a.password
+        const query = `select a.id, a.name, a.username, a.password, a.type
                        from account a
                        where a.is_deleted = false
                          and a.id = $1;`;
@@ -39,7 +39,7 @@ const AccountModel = {
         return rows.length > 0 ? rows[0] : {};
     }),
     getInformationByUsername: (username) => __awaiter(void 0, void 0, void 0, function* () {
-        const query = `select a.id, a.name, a.username, a.password
+        const query = `select a.id, a.name, a.username, a.password, a.type
                        from account a
                        where a.is_deleted = false
                          and a.username = $1;`;
@@ -51,10 +51,11 @@ const AccountModel = {
         const query = `update account
                        set name     = $1,
                            username = $2,
-                           password = $3
-                       where id = $4;`;
-        const { name, username } = accountForm;
-        const parameters = [name, username, newHashedPassword, accountID];
+                           password = $3,
+                           type = $4
+                       where id = $5;`;
+        const { name, username, type } = accountForm;
+        const parameters = [name, username, newHashedPassword, type, accountID];
         yield database_1.default.execute(query, parameters);
     }),
     remove: (accountID) => __awaiter(void 0, void 0, void 0, function* () {

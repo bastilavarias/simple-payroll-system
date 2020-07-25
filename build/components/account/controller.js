@@ -21,6 +21,7 @@ const AccountController = {
                 name: request.body.name ? request.body.name : "",
                 username: request.body.username ? request.body.username : "",
                 password: request.body.password ? request.body.password : "",
+                type: request.body.type ? request.body.type : "Staff",
             };
             const result = yield service_1.default.save(accountForm);
             if (service_2.default.checkErrorIfValid(result.error))
@@ -71,6 +72,7 @@ const AccountController = {
                 name: request.body.name ? request.body.name : "",
                 username: request.body.username ? request.body.username : "",
                 password: request.body.password ? request.body.password : "",
+                type: request.body.type ? request.body.type : "",
             };
             const result = yield service_1.default.update(accountID, accountForm);
             if (Object.keys(result.error).length > 0)
