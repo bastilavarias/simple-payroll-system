@@ -66,6 +66,11 @@ const defaultTableHeaders = [
   },
 
   {
+    text: "Type",
+    value: "type",
+  },
+
+  {
     text: "Actions",
     value: "actions",
   },

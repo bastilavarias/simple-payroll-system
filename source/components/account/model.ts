@@ -11,7 +11,7 @@ const AccountModel = {
   },
 
   fetch: async () => {
-    const query = `select a.id, a.name, a.username
+    const query = `select a.id, a.name, a.username, a.type
                        from account a
                        where a.is_deleted = false
                        order by id asc;`;
