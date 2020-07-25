@@ -136,6 +136,7 @@ export default {
         name: this.form.name ? this.form.name : "",
         username: this.form.username ? this.form.username : "",
         password: this.form.password ? this.form.password : "",
+        type: this.form.type ? this.form.type : "",
       };
       const saveAccountMessage = await this.$store.dispatch(
         SAVE_ACCOUNT,

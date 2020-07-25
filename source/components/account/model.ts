@@ -3,10 +3,10 @@ import { AccountForm, AccountInformation } from "./type";
 
 const AccountModel = {
   save: async (accountForm: AccountForm, hashedPassword: string) => {
-    const query = `insert into account (name, username, password)
-                       values ($1, $2, $3);`;
-    const { name, username } = accountForm;
-    const parameters = [name, username, hashedPassword];
+    const query = `insert into account (name, username, password, type)
+                       values ($1, $2, $3, $4);`;
+    const { name, username, type } = accountForm;
+    const parameters = [name, username, hashedPassword, type];
     await Database.execute(query, parameters);
   },
 

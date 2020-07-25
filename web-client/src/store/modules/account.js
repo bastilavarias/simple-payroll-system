@@ -27,9 +27,14 @@ const AccountStoreModule = {
   },
 
   actions: {
-    [SAVE_ACCOUNT]: async ({ commit }, { name, username, password }) => {
+    [SAVE_ACCOUNT]: async ({ commit }, { name, username, password, type }) => {
       try {
-        const result = await AccountHTTP.save({ name, username, password });
+        const result = await AccountHTTP.save({
+          name,
+          username,
+          password,
+          type,
+        });
         const { message } = result.data;
         return message;
       } catch (error) {
