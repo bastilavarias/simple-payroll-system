@@ -21,15 +21,15 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title class="text-capitalize font-weight-bold">
-              {{ authenticatedCredentials.account.name }}
+              {{ credentials.account.name }}
             </v-list-item-title>
             <v-list-item-subtitle class="text-capitalize">{{
-              authenticatedCredentials.account.type
+              credentials.account.type
             }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-divider></v-divider>
-        <template v-for="(action, index) in authenticatedCredentials.actions">
+        <template v-for="(action, index) in credentials.actions">
           <v-list-item
             active-class="primary white--text"
             :key="index"
@@ -101,7 +101,7 @@ export default {
   components: { CustomGlobalNotificationSnackbar },
 
   computed: {
-    authenticatedCredentials() {
+    credentials() {
       return this.$store.state.authentication.credentials;
     },
   },

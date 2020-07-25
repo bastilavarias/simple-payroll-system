@@ -219,12 +219,15 @@ router.beforeEach(async (to, from, next) => {
   const authentication = store.state.authentication;
   const credentials = authentication.credentials;
   const isAuthenticated = authentication.isAuthenticated;
+  const redirectTo =
+    credentials.actions.length > 0
+      ? credentials.actions[0].to
+      : { name: "login" };
   const isProtectedRoute = to.matched.some(
     (record) => record.meta.requiresAuth
   );
   if (isProtectedRoute && !isAuthenticated) return next({ name: "login" });
-  if (to.name === "login" && isAuthenticated)
-    return next({ name: "employee-table" });
+  if (to.name === "login" && isAuthenticated) return next(redirectTo);
   next();
 });
 

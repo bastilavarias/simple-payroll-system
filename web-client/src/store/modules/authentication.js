@@ -21,6 +21,7 @@ const defaultCredentials = {
     username: "",
     name: "",
   },
+  actions: [],
 };
 
 const AuthenticationStoreModule = {

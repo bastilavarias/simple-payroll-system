@@ -26,7 +26,7 @@
           <span class="text-capitalize">{{ item.name }}</span>
         </template>
         <template v-slot:item.username="{ item }">
-          <span class="text-capitalize">{{ item.username }}</span>
+          {{ item.username }}
         </template>
         <template v-slot:item.actions="{ item }">
           <v-btn icon color="secondary" @click="viewAccount(item.id)">

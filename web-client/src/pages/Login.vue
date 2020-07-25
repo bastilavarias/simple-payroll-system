@@ -73,7 +73,7 @@ export default {
     isAuthenticated() {
       return this.$store.state.authentication.isAuthenticated;
     },
-    authenticatedCredentials() {
+    credentials() {
       return this.$store.state.authentication.credentials;
     },
   },
@@ -84,7 +84,11 @@ export default {
       await this.$store.dispatch(AUTHENTICATION_LOGIN, this.form);
       this.isLoginStart = false;
       if (this.isAuthenticated) {
-        await this.$router.push({ name: "employee-table" });
+        const redirectTo =
+          this.credentials.actions.length > 0
+            ? this.credentials.actions[0].to
+            : { name: "login" };
+        await this.$router.push(redirectTo);
       }
     },
   },
