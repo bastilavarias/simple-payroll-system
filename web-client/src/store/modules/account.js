@@ -64,7 +64,7 @@ const AccountStoreModule = {
 
     [UPDATE_ACCOUNT]: async (
       context,
-      { accountID, name, username, password }
+      { accountID, name, username, password, type }
     ) => {
       try {
         const result = await AccountHTTP.update({
@@ -72,6 +72,7 @@ const AccountStoreModule = {
           name,
           username,
           password,
+          type,
         });
         const { message } = result.data;
         return message;

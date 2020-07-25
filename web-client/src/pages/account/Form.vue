@@ -155,12 +155,13 @@ export default {
     },
 
     async getAccountInformation() {
-      const { name, username } = await this.$store.dispatch(
+      const { name, username, type } = await this.$store.dispatch(
         GET_ACCOUNT_INFORMATION,
         this.accountID
       );
       this.form.name = name;
       this.form.username = username;
+      this.form.type = type;
     },
 
     async updateAccount() {
@@ -170,6 +171,7 @@ export default {
         name: this.form.name ? this.form.name : "",
         username: this.form.username ? this.form.username : "",
         password: this.form.newPassword ? this.form.newPassword : "",
+        type: this.form.type ? this.form.type : "",
       };
       const updateAccountMessage = await this.$store.dispatch(
         UPDATE_ACCOUNT,

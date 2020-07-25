@@ -49,10 +49,11 @@ const AccountModel = {
     const query = `update account
                        set name     = $1,
                            username = $2,
-                           password = $3
-                       where id = $4;`;
-    const { name, username } = accountForm;
-    const parameters = [name, username, newHashedPassword, accountID];
+                           password = $3,
+                           type = $4
+                       where id = $5;`;
+    const { name, username, type } = accountForm;
+    const parameters = [name, username, newHashedPassword, type, accountID];
     await Database.execute(query, parameters);
   },
 
