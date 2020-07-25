@@ -102,13 +102,13 @@ export default {
 
   computed: {
     isSaveAccountFormValid() {
-      const { name, username, password } = this.form;
-      return name && username && password;
+      const { name, username, password, type } = this.form;
+      return name && username && password && type;
     },
 
     isUpdateAccountFormValid() {
-      const { name, username } = this.form;
-      return name && username;
+      const { name, username, type } = this.form;
+      return name && username && type;
     },
 
     operation() {
